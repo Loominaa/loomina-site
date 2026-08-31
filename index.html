@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Loomina</title>
+    <meta name="description" content="Alle socials van Loomina op één plek.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at top, #27273a 0%, #111118 45%, #08080c 100%);
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .username {
+            color: #a8a8b8;
+            margin-bottom: 12px;
+        }
+
+        .bio {
+            color: #c8c8d0;
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 16px 20px;
+
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+
+            backdrop-filter: blur(10px);
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .link:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        footer {
+            margin-top: 35px;
+            color: #777786;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- Zet hier je eigen profielfoto neer -->
+        <img
+            class="profile-picture"
+            src="profile.jpg"
+            alt="Loomina profielfoto"
+        >
+
+        <h1>Loomina</h1>
+
+        <p class="username">@loomina</p>
+
+        <p class="bio">
+            Welcome to my corner of the internet ✨
+        </p>
+
+        <div class="links">
+
+            <a
+                class="link"
+                href="https://www.twitch.tv/JOUWNAAM"
+                target="_blank"
+                rel="noopener noreferrer">
+                Twitch
+            </a>
+
+            <a
+                class="link"
+                href="https://www.youtube.com/@JOUWNAAM"
+                target="_blank"
+                rel="noopener noreferrer">
+                YouTube
+            </a>
+
+            <a
+                class="link"
+                href="https://www.tiktok.com/@JOUWNAAM"
+                target="_blank"
+                rel="noopener noreferrer">
+                TikTok
+            </a>
+
+            <a
+                class="link"
+                href="https://www.instagram.com/JOUWNAAM"
+                target="_blank"
+                rel="noopener noreferrer">
+                Instagram
+            </a>
+
+            <a
+                class="link"
+                href="https://discord.gg/JOUWLINK"
+                target="_blank"
+                rel="noopener noreferrer">
+                Discord
+            </a>
+
+        </div>
+
+        <footer>
+            loomina.me
+        </footer>
+
+    </main>
+
+</body>
+</html>
