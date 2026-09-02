@@ -57,6 +57,7 @@
             content: "";
             position: fixed;
             inset: 0;
+            z-index: 0;
             pointer-events: none;
             background:
                 radial-gradient(circle at center, transparent 24%, rgba(22, 7, 19, 0.45) 100%),
@@ -66,7 +67,7 @@
         .ambient {
             position: fixed;
             inset: 0;
-            z-index: 0;
+            z-index: 1;
             overflow: hidden;
             pointer-events: none;
         }
@@ -80,21 +81,27 @@
 
         .ambient-gradient {
             inset: -18%;
+            z-index: 0;
             background:
                 radial-gradient(ellipse at 18% 92%, rgba(255, 112, 181, 0.2) 0%, transparent 48%),
                 radial-gradient(ellipse at 82% 105%, rgba(123, 40, 93, 0.2) 0%, transparent 46%),
                 radial-gradient(circle at 72% 22%, rgba(116, 67, 132, 0.1) 0%, transparent 36%);
             opacity: 0.82;
             transform: translate3d(-2%, 2%, 0) scale(1.02);
-            animation: ambient-shift 34s ease-in-out infinite alternate;
+            animation: ambient-shift 26s ease-in-out infinite alternate;
             will-change: transform;
         }
 
         .ambient-grain {
+            z-index: 1;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.78'/%3E%3C/svg%3E");
             background-size: 180px 180px;
             opacity: 0.035;
             mix-blend-mode: soft-light;
+        }
+
+        .particles {
+            z-index: 2;
         }
 
         .particle {
@@ -114,13 +121,13 @@
         .particle--glow {
             background: rgba(255, 190, 222, 0.95);
             box-shadow:
-                0 0 7px rgba(255, 154, 204, 0.62),
-                0 0 16px rgba(255, 112, 181, 0.22);
+                0 0 8px rgba(255, 154, 204, 0.72),
+                0 0 18px rgba(255, 112, 181, 0.3);
         }
 
         .glow {
             position: fixed;
-            z-index: 0;
+            z-index: 2;
             width: 28rem;
             aspect-ratio: 1;
             left: 50%;
@@ -134,7 +141,7 @@
 
         .page {
             position: relative;
-            z-index: 1;
+            z-index: 3;
             min-height: 100vh;
             display: grid;
             place-items: center;
@@ -420,7 +427,7 @@
 
         @keyframes ambient-shift {
             from { transform: translate3d(-2%, 2%, 0) scale(1.02); }
-            to { transform: translate3d(2.5%, -1.5%, 0) scale(1.07); }
+            to { transform: translate3d(4%, -3%, 0) scale(1.09); }
         }
 
         @keyframes particle-float {
@@ -559,7 +566,7 @@
     <script>
         const particleLayer = document.getElementById('particles');
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const particleCount = window.innerWidth < 560 ? 16 : 26;
+        const particleCount = window.innerWidth < 560 ? 20 : 32;
         let particleSeed = 2317;
 
         const seededRandom = () => {
@@ -571,18 +578,18 @@
 
         for (let index = 0; index < particleCount; index += 1) {
             const particle = document.createElement('span');
-            const size = 1 + seededRandom() * 1.8;
-            const duration = 18 + seededRandom() * 18;
+            const size = 1.4 + seededRandom() * 2.2;
+            const duration = 14 + seededRandom() * 12;
 
-            particle.className = index % 6 === 0 ? 'particle particle--glow' : 'particle';
+            particle.className = index % 5 === 0 ? 'particle particle--glow' : 'particle';
             particle.style.setProperty('--x', `${(seededRandom() * 100).toFixed(2)}%`);
             particle.style.setProperty('--y', `${(seededRandom() * 100).toFixed(2)}%`);
             particle.style.setProperty('--size', `${size.toFixed(2)}px`);
-            particle.style.setProperty('--opacity', (0.16 + seededRandom() * 0.34).toFixed(2));
+            particle.style.setProperty('--opacity', (0.34 + seededRandom() * 0.38).toFixed(2));
             particle.style.setProperty('--duration', `${duration.toFixed(1)}s`);
             particle.style.setProperty('--delay', reducedMotion ? '0s' : `-${(seededRandom() * duration).toFixed(1)}s`);
-            particle.style.setProperty('--drift-x', `${(seededRandom() * 18 - 9).toFixed(1)}px`);
-            particle.style.setProperty('--drift-y', `${(-8 - seededRandom() * 18).toFixed(1)}px`);
+            particle.style.setProperty('--drift-x', `${(seededRandom() * 28 - 14).toFixed(1)}px`);
+            particle.style.setProperty('--drift-y', `${(-18 - seededRandom() * 22).toFixed(1)}px`);
             particleFragment.appendChild(particle);
         }
 
@@ -605,7 +612,6 @@
     </script>
 </body>
 </html>
-
 
 
 
