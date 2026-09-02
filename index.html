@@ -107,22 +107,20 @@
         .particle {
             position: absolute;
             left: var(--x);
-            top: var(--y);
+            top: -14vh;
             width: var(--size);
-            height: var(--size);
-            border-radius: 50%;
-            background: rgba(255, 235, 246, 0.9);
+            aspect-ratio: 0.72;
+            background: url("sakura-petal.webp") center / contain no-repeat;
             opacity: var(--opacity);
-            transform: translate3d(0, 0, 0);
-            animation: particle-float var(--duration) ease-in-out var(--delay) infinite alternate;
+            transform: translate3d(0, 0, 0) rotate(var(--rotate-start));
+            animation: petal-fall var(--duration) linear var(--delay) infinite;
             will-change: transform;
         }
 
         .particle--glow {
-            background: rgba(255, 190, 222, 0.95);
-            box-shadow:
-                0 0 8px rgba(255, 154, 204, 0.72),
-                0 0 18px rgba(255, 112, 181, 0.3);
+            filter:
+                drop-shadow(0 0 4px rgba(255, 190, 222, 0.7))
+                drop-shadow(0 0 9px rgba(255, 112, 181, 0.28));
         }
 
         .glow {
@@ -430,9 +428,16 @@
             to { transform: translate3d(4%, -3%, 0) scale(1.09); }
         }
 
-        @keyframes particle-float {
-            from { transform: translate3d(0, 0, 0); }
-            to { transform: translate3d(var(--drift-x), var(--drift-y), 0); }
+        @keyframes petal-fall {
+            0% {
+                transform: translate3d(0, -8vh, 0) rotate(var(--rotate-start));
+            }
+            50% {
+                transform: translate3d(var(--sway), 55vh, 0) rotate(var(--rotate-mid));
+            }
+            100% {
+                transform: translate3d(var(--drift-x), 122vh, 0) rotate(var(--rotate-end));
+            }
         }
 
         @keyframes card-in {
@@ -478,6 +483,11 @@
             .particle {
                 animation: none !important;
                 will-change: auto;
+            }
+
+            .particle {
+                top: var(--static-y);
+                transform: rotate(var(--rotate-start));
             }
 
             *, *::before, *::after {
@@ -566,7 +576,7 @@
     <script>
         const particleLayer = document.getElementById('particles');
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const particleCount = window.innerWidth < 560 ? 20 : 32;
+        const particleCount = window.innerWidth < 560 ? 14 : 22;
         let particleSeed = 2317;
 
         const seededRandom = () => {
@@ -578,18 +588,22 @@
 
         for (let index = 0; index < particleCount; index += 1) {
             const particle = document.createElement('span');
-            const size = 1.4 + seededRandom() * 2.2;
-            const duration = 14 + seededRandom() * 12;
+            const size = 11 + seededRandom() * 13;
+            const duration = 20 + seededRandom() * 18;
+            const rotation = seededRandom() * 360;
 
             particle.className = index % 5 === 0 ? 'particle particle--glow' : 'particle';
             particle.style.setProperty('--x', `${(seededRandom() * 100).toFixed(2)}%`);
-            particle.style.setProperty('--y', `${(seededRandom() * 100).toFixed(2)}%`);
+            particle.style.setProperty('--static-y', `${(seededRandom() * 100).toFixed(2)}%`);
             particle.style.setProperty('--size', `${size.toFixed(2)}px`);
-            particle.style.setProperty('--opacity', (0.34 + seededRandom() * 0.38).toFixed(2));
+            particle.style.setProperty('--opacity', (0.38 + seededRandom() * 0.34).toFixed(2));
             particle.style.setProperty('--duration', `${duration.toFixed(1)}s`);
             particle.style.setProperty('--delay', reducedMotion ? '0s' : `-${(seededRandom() * duration).toFixed(1)}s`);
-            particle.style.setProperty('--drift-x', `${(seededRandom() * 28 - 14).toFixed(1)}px`);
-            particle.style.setProperty('--drift-y', `${(-18 - seededRandom() * 22).toFixed(1)}px`);
+            particle.style.setProperty('--sway', `${(seededRandom() * 44 - 22).toFixed(1)}px`);
+            particle.style.setProperty('--drift-x', `${(seededRandom() * 84 - 42).toFixed(1)}px`);
+            particle.style.setProperty('--rotate-start', `${rotation.toFixed(1)}deg`);
+            particle.style.setProperty('--rotate-mid', `${(rotation + 170 + seededRandom() * 90).toFixed(1)}deg`);
+            particle.style.setProperty('--rotate-end', `${(rotation + 360 + seededRandom() * 180).toFixed(1)}deg`);
             particleFragment.appendChild(particle);
         }
 
@@ -612,7 +626,6 @@
     </script>
 </body>
 </html>
-
 
 
 
