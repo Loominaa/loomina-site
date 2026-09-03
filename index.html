@@ -321,7 +321,7 @@
 
         .socials {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 10px;
         }
 
@@ -1194,7 +1194,7 @@
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
-            .social:last-child:nth-child(3n + 2) {
+            .social:last-child:nth-child(odd) {
                 grid-column: span 2;
             }
 
@@ -1396,10 +1396,6 @@
                 <button class="social" type="button" data-panel="mods" data-title="Mods" data-copy="The full mod list will appear here." aria-label="Open Mods">
                     <span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img"><path fill="currentColor" d="M9 3h6v3h3v4h3v6h-3v4H6v-4H3v-6h3V6h3V3Zm2 2v3H8v4H5v2h3v4h8v-4h3v-2h-3V8h-3V5h-2Zm-1 7h2v2h-2v-2Zm4 0h2v2h-2v-2Z"/></svg></span>
                     <span class="social-name">Mods</span>
-                </button>
-                <button class="social" type="button" data-panel="party-and-claims" data-title="Party and Claims" data-copy="Learn how parties, protected chunks, forceloads, permissions, and every player command work." aria-label="Open Party and Claims">
-                    <span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img"><path fill="currentColor" d="M8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8-1a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8 13c-4 0-7 2-7 5v2h10v-2c0-1.5.7-2.8 1.8-3.9A10.4 10.4 0 0 0 8 13Zm8-1c-2.8 0-5 1.7-5 4v4h12v-4c0-2.3-3.2-4-7-4Z"/></svg></span>
-                    <span class="social-name">Party and Claims</span>
                 </button>
             </nav>
 
