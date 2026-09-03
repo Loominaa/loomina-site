@@ -579,6 +579,33 @@
 
 
 
+
+        .boss-item[data-difficulty="moderate"] .mod-name {
+            color: #bdf9d1;
+            text-shadow: 0 0 16px rgba(102, 228, 154, 0.2);
+        }
+
+        .boss-item[data-difficulty="hard"] .mod-name {
+            color: #ffe0a6;
+            text-shadow: 0 0 16px rgba(255, 178, 57, 0.2);
+        }
+
+        .boss-item[data-difficulty="very-hard"] .mod-name {
+            color: #ffc1bd;
+            text-shadow: 0 0 16px rgba(255, 92, 82, 0.2);
+        }
+
+        .boss-item[data-difficulty="extreme"] .mod-name {
+            color: #e5c4ff;
+            text-shadow: 0 0 18px rgba(161, 72, 232, 0.28);
+        }
+
+        .boss-fact--rewards {
+            grid-column: 1 / -1;
+            border-color: rgba(255, 183, 217, 0.2);
+            background: linear-gradient(135deg, rgba(255, 112, 181, 0.09), rgba(255, 255, 255, 0.035));
+        }
+
         .bosses-legend {
             display: flex;
             flex-wrap: wrap;
@@ -3667,7 +3694,7 @@
                 </div>
             </div>
             <div class="bosses-content" id="bosses-content" hidden>
-                <p class="bosses-intro"><strong>29 boss encounters from 11 mods.</strong> Open a guide for its location, encounter trigger, difficulty, and recommended preparation. Difficulty is a practical recommendation for this pack, not an official fixed stat.</p>
+                <p class="bosses-intro"><strong>29 boss encounters from 11 mods.</strong> Open a guide for its location, encounter trigger, difficulty, recommended preparation, and rewards. Difficulty is a practical recommendation for this pack, not an official fixed stat.</p>
                 <div class="bosses-legend" aria-label="Difficulty scale">
                     <span class="difficulty-badge difficulty-badge--moderate">Moderate</span>
                     <span class="difficulty-badge difficulty-badge--hard">Hard</span>
@@ -3680,7 +3707,7 @@
                             <h3>Alex&#039;s Mobs</h3>
                             <span>1 encounter</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="extreme">
                             <summary class="mod-summary">
                                 <span class="mod-number">001</span>
                                 <span class="mod-heading">
@@ -3712,6 +3739,10 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Endgame enchanted diamond or Netherite gear, a strong bow, Slow Falling, healing, blocks, and an Elytra with rockets for recovery.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Void Worm Eye, several Void Worm Mandibles, experience, and the boss advancement.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
@@ -3721,7 +3752,7 @@
                             <h3>Deep Aether</h3>
                             <span>1 encounter</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">002</span>
                                 <span class="mod-heading">
@@ -3753,6 +3784,10 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Fully enchanted diamond or strong Aether-tier armor, a powerful ranged weapon, healing, food, and mobility items.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Brass Dungeon Key, 8 Cold Aerclouds, experience, and access to the Brass Dungeon treasure.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
@@ -3762,7 +3797,7 @@
                             <h3>Deeper and Darker</h3>
                             <span>1 encounter</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">003</span>
                                 <span class="mod-heading">
@@ -3794,6 +3829,10 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Fully enchanted diamond or Netherite armor, healing, a shield, ranged damage, wool for quieter movement, and an escape route.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>A Soul Crystal, used for powerful Deeper and Darker progression items such as the Soul Elytra.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
@@ -3803,7 +3842,7 @@
                             <h3>Galosphere</h3>
                             <span>1 encounter</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">004</span>
                                 <span class="mod-heading">
@@ -3835,6 +3874,10 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Enchanted diamond armor, a shield, strong melee damage, a bow, healing, and space to dodge its slams.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Preserved Flesh and a chance to obtain the Preserved armor-trim Smithing Template.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
@@ -3844,7 +3887,7 @@
                             <h3>Hybrid Aquatic</h3>
                             <span>5 encounters</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="moderate">
                             <summary class="mod-summary">
                                 <span class="mod-number">005</span>
                                 <span class="mod-heading">
@@ -3876,10 +3919,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Iron armor or better, a shield, food, and a bow to keep distance.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>No guaranteed unique boss item in the installed version; this encounter is mainly for creature drops, experience, and exploration.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="moderate">
                             <summary class="mod-summary">
                                 <span class="mod-number">006</span>
                                 <span class="mod-heading">
@@ -3911,10 +3958,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Iron armor or better, a shield, reliable melee damage, food, and Water Breathing if fighting underwater.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>No dedicated unique boss reward in the installed version; defeat it for its normal creature drops and experience.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="moderate">
                             <summary class="mod-summary">
                                 <span class="mod-number">007</span>
                                 <span class="mod-heading">
@@ -3946,10 +3997,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Iron armor or better, a shield, food, and underwater mobility such as Depth Strider.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>No dedicated unique boss reward in the installed version; defeat it for its normal creature drops and experience.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">008</span>
                                 <span class="mod-heading">
@@ -3981,10 +4036,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Enchanted diamond armor, a shield, strong melee damage, healing, Water Breathing, and Depth Strider.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Karkinos Claw, Raw Crab, experience, and the “A Herculean Task” advancement.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">009</span>
                                 <span class="mod-heading">
@@ -4016,6 +4075,10 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Fully enchanted diamond armor, Water Breathing, Depth Strider, strong ranged damage, healing, and a boat or safe platform.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Comically Large Nautilus Shell, Raw Tentacle, experience, and the “Shell-Shocked” advancement.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
@@ -4025,7 +4088,7 @@
                             <h3>Incendium</h3>
                             <span>1 encounter</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="extreme">
                             <summary class="mod-summary">
                                 <span class="mod-number">010</span>
                                 <span class="mod-heading">
@@ -4057,6 +4120,10 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Netherite or top-tier enchanted armor, Fire Resistance, strong ranged damage, golden apples, healing, and a Totem of Undying.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Two artifact rolls drawn from Infernal Feather, Trailblazer, Firestorm, Prismatic Shield, and Necrotic Shield rewards, plus the completion advancement.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
@@ -4066,7 +4133,7 @@
                             <h3>L_Ender&#039;s Cataclysm</h3>
                             <span>8 encounters</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">011</span>
                                 <span class="mod-heading">
@@ -4098,10 +4165,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Fully enchanted diamond or Netherite armor, Feather Falling, a shield, strong ranged damage, healing, and open space to avoid charges.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Ancient Metal Block, Remnant Skull, Sandstorm in a Bottle, experience, and a chance for its music disc.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">012</span>
                                 <span class="mod-heading">
@@ -4133,10 +4204,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Netherite or top-tier enchanted armor, a shield, Slow Falling, strong ranged damage, healing, and an Elytra for fall recovery.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Gauntlet of Guard, experience, and a chance for the Ender Guardian music disc.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="extreme">
                             <summary class="mod-summary">
                                 <span class="mod-number">013</span>
                                 <span class="mod-heading">
@@ -4168,10 +4243,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Best available enchanted armor, Fire Resistance, a strong axe for shields, healing, golden apples, ranged damage, and a Totem of Undying.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Ignitium Ingots, large amounts of experience, and a chance for the Ignis music disc.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="extreme">
                             <summary class="mod-summary">
                                 <span class="mod-number">014</span>
                                 <span class="mod-heading">
@@ -4203,10 +4282,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Best available enchanted armor, ranged and melee options, healing, golden apples, a Totem of Undying, and constant movement.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Cursium Ingots, large amounts of experience, and a chance for the Maledictus music disc.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">015</span>
                                 <span class="mod-heading">
@@ -4238,10 +4321,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Post-dragon enchanted diamond or Netherite gear, Fire Resistance, a shield, ranged damage, healing, and blocks to control nearby lava.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Infernal Forge, Monstrous Horn, Lava Power Cell, experience, and a chance for its music disc.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="extreme">
                             <summary class="mod-summary">
                                 <span class="mod-number">016</span>
                                 <span class="mod-heading">
@@ -4273,10 +4360,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Best available enchanted armor, Water Breathing, Depth Strider, lightning-safe positioning, strong ranged damage, healing, and a Totem.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Essence of the Storm, Lacrima, large amounts of experience, and a chance for the Scylla music disc.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="extreme">
                             <summary class="mod-summary">
                                 <span class="mod-number">017</span>
                                 <span class="mod-heading">
@@ -4308,10 +4399,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Best available enchanted armor, a shield, high burst damage, healing, golden apples, a Totem of Undying, and cover for laser attacks.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Witherite Block, large amounts of experience, and a chance for The Harbinger music disc.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="extreme">
                             <summary class="mod-summary">
                                 <span class="mod-number">018</span>
                                 <span class="mod-heading">
@@ -4343,6 +4438,10 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Best available enchanted armor, Water Breathing, Respiration, Depth Strider, underwater ranged damage, healing, and a Totem.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Tidal Claws, Abyssal Egg, large amounts of experience, and a chance for The Leviathan music disc.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
@@ -4352,7 +4451,7 @@
                             <h3>Legendary Monsters</h3>
                             <span>3 encounters</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">019</span>
                                 <span class="mod-heading">
@@ -4384,10 +4483,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Enchanted diamond armor, Projectile Protection, a bow, healing, food, and a shield.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Air Rune and a chance to receive Atmospheric Boots.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">020</span>
                                 <span class="mod-heading">
@@ -4419,10 +4522,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Fully enchanted diamond or Netherite armor, a shield, ranged backup, healing, golden apples, and patience for its attack openings.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Corrupted Soul and a chance to receive the Soul Great Sword.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="extreme">
                             <summary class="mod-summary">
                                 <span class="mod-number">021</span>
                                 <span class="mod-heading">
@@ -4454,6 +4561,10 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Endgame Netherite or stronger gear, high ranged damage, Slow Falling, healing, golden apples, a Totem, and an Elytra with rockets.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Portal Shards, experience, and progression rewards from the Space Station encounter.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
@@ -4463,7 +4574,7 @@
                             <h3>Mowzie&#039;s Mobs</h3>
                             <span>4 encounters</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">022</span>
                                 <span class="mod-heading">
@@ -4495,10 +4606,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Diamond armor, a strong weapon, a shield, healing, and enough room to circle behind it; timing matters more than raw damage.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Wrought Axe and Wrought Helmet—the Wroughtnaut’s signature indestructible equipment.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">023</span>
                                 <span class="mod-heading">
@@ -4530,10 +4645,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Fully enchanted diamond armor, Projectile Protection, a shield, ranged damage, healing, and mobility to escape freezing attacks.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Ice Crystal if it still has one when defeated, plus a chance for the Petiole music disc.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">024</span>
                                 <span class="mod-heading">
@@ -4565,10 +4684,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Diamond armor for combat; for the trial bring food, clear inventory space, practice movement, and avoid relying on heavy gear alone.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Complete the timed trial for the Earthrend Gauntlet. Defeating Tongbi can also yield the Sculptor Staff and pieces of Geomancer equipment.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">025</span>
                                 <span class="mod-heading">
@@ -4600,6 +4723,10 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Fully enchanted diamond armor, a shield, strong ranged damage, healing, and a plan to remove healing/supporting followers quickly.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Sol Visage, Umvuthana Feathers, normal Feathers, and experience.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
@@ -4609,7 +4736,7 @@
                             <h3>Stellarity</h3>
                             <span>1 encounter</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="extreme">
                             <summary class="mod-summary">
                                 <span class="mod-number">026</span>
                                 <span class="mod-heading">
@@ -4641,6 +4768,10 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Best post-dragon gear, an Elytra and rockets, very high ranged damage, healing, golden apples, Slow Falling, and a Totem. Fight at night for the safer version.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>One reward from Stella, Prismatic Pearl, Prismatic Punch, or Starstruck Carcanet, with special rewards tied to the harder daylight challenge.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
@@ -4650,7 +4781,7 @@
                             <h3>The Aether</h3>
                             <span>3 encounters</span>
                         </header>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">027</span>
                                 <span class="mod-heading">
@@ -4682,10 +4813,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Good iron, diamond, or Aether-tier armor; the strongest pickaxe available, healing, food, and movement space.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Bronze Dungeon Key, Carved Stone, experience, and access to the Bronze Treasure Chest.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">028</span>
                                 <span class="mod-heading">
@@ -4717,10 +4852,14 @@
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Strong Aether-tier or enchanted diamond armor, Fire Resistance, ranged damage, healing, and cooling or ice-themed equipment if available.</dd>
                                     </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Gold Dungeon Key, Sun Altar, experience, and access to the Gold Treasure Chest.</dd>
+                                    </div>
                                 </dl>
                             </div>
                         </details>
-                        <details class="boss-item mod-item">
+                        <details class="boss-item mod-item" data-difficulty="very-hard">
                             <summary class="mod-summary">
                                 <span class="mod-number">029</span>
                                 <span class="mod-heading">
@@ -4751,6 +4890,10 @@
                                     <div class="boss-fact">
                                         <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
                                         <dd>Strong Aether-tier or enchanted diamond armor, a shield, healing, ranged backup, and the 10 Victory Medals.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--rewards">
+                                        <dt><span aria-hidden="true">★</span> Rewards</dt>
+                                        <dd>Silver Dungeon Key, a Golden Sword, experience, and access to the Silver Treasure Chest.</dd>
                                     </div>
                                 </dl>
                             </div>
