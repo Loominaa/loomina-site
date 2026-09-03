@@ -576,6 +576,257 @@
             to { background-position: 53% 47%; }
         }
 
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .modal.modal--mods .modal-panel {
+            width: min(100%, 760px);
+            height: min(82dvh, 760px);
+            justify-content: flex-start;
+        }
+
+        .mods-content {
+            position: relative;
+            min-height: 0;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .mods-content[hidden] {
+            display: none;
+        }
+
+        .mods-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .mods-search-wrap {
+            min-width: 0;
+            min-height: 46px;
+            display: flex;
+            flex: 1;
+            align-items: center;
+            gap: 10px;
+            padding: 0 14px;
+            border: 1px solid rgba(255, 221, 238, 0.18);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.055);
+            transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+        }
+
+        .mods-search-wrap:focus-within {
+            border-color: rgba(255, 183, 217, 0.58);
+            background: rgba(255, 112, 181, 0.1);
+            box-shadow: 0 0 0 3px rgba(255, 112, 181, 0.08);
+        }
+
+        .mods-search-wrap svg {
+            width: 18px;
+            height: 18px;
+            flex: 0 0 auto;
+            color: var(--muted);
+        }
+
+        .mods-search {
+            width: 100%;
+            min-width: 0;
+            padding: 12px 0;
+            color: var(--text);
+            font: inherit;
+            font-size: 0.9rem;
+            border: 0;
+            outline: 0;
+            background: transparent;
+        }
+
+        .mods-search::placeholder {
+            color: #ba91a8;
+        }
+
+        .mods-count {
+            flex: 0 0 auto;
+            color: var(--muted);
+            font-size: 0.76rem;
+            font-weight: 650;
+        }
+
+        .mods-list {
+            min-height: 0;
+            display: grid;
+            flex: 1;
+            align-content: start;
+            gap: 8px;
+            padding-right: 5px;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            scrollbar-color: rgba(255, 183, 217, 0.45) transparent;
+            scrollbar-width: thin;
+        }
+
+        .mod-item {
+            border: 1px solid rgba(255, 221, 238, 0.12);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.035);
+            transition: border-color 180ms ease, background 180ms ease;
+        }
+
+        .mod-item[open] {
+            border-color: rgba(255, 183, 217, 0.38);
+            background: rgba(255, 112, 181, 0.085);
+        }
+
+        .mod-summary {
+            min-height: 60px;
+            display: grid;
+            grid-template-columns: 36px minmax(0, 1fr) 24px;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            cursor: pointer;
+            list-style: none;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mod-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .mod-summary:focus-visible {
+            border-radius: 13px;
+            outline: 2px solid rgba(255, 183, 217, 0.7);
+            outline-offset: 2px;
+        }
+
+        .mod-number {
+            color: #a77c96;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.66rem;
+        }
+
+        .mod-heading {
+            min-width: 0;
+            display: grid;
+            gap: 3px;
+        }
+
+        .mod-name {
+            overflow: hidden;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 680;
+            line-height: 1.25;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .mod-version {
+            overflow: hidden;
+            color: #c9a9bb;
+            font-size: 0.7rem;
+            line-height: 1.2;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .mod-chevron {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.055);
+            transition: transform 260ms ease, background 180ms ease;
+        }
+
+        .mod-chevron::before,
+        .mod-chevron::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 9px;
+            width: 8px;
+            height: 1.5px;
+            border-radius: 999px;
+            background: var(--accent);
+        }
+
+        .mod-chevron::after {
+            transform: rotate(90deg);
+        }
+
+        .mod-item[open] .mod-chevron {
+            transform: rotate(45deg);
+            background: rgba(255, 112, 181, 0.14);
+        }
+
+        .mod-description {
+            padding: 0 18px 17px 58px;
+            color: #efdbe6;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            animation: mod-description-in 220ms ease both;
+        }
+
+        .mods-empty {
+            padding: 34px 16px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        @keyframes mod-description-in {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .modal.modal--mods .modal-panel {
+                height: calc(100svh - 24px - env(safe-area-inset-bottom));
+                min-height: 0;
+            }
+
+            .mods-toolbar {
+                align-items: stretch;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .mods-count {
+                padding-left: 3px;
+            }
+
+            .mod-summary {
+                min-height: 64px;
+                grid-template-columns: 31px minmax(0, 1fr) 24px;
+                padding-inline: 11px;
+            }
+
+            .mod-description {
+                padding: 0 13px 16px 50px;
+            }
+        }
+
         @media (max-width: 560px) {
             .profile-card {
                 padding: 38px 20px 24px;
@@ -782,6 +1033,1839 @@
             <p class="modal-kicker">Kash Kittens</p>
             <h2 class="modal-title" id="modal-title"></h2>
             <p class="modal-copy" id="modal-copy"></p>
+            <div class="mods-content" id="mods-content" hidden>
+                <div class="mods-toolbar">
+                    <label class="mods-search-wrap">
+                        <span class="visually-hidden">Search mods</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m20.7 19.3-4.2-4.2a7.5 7.5 0 1 0-1.4 1.4l4.2 4.2 1.4-1.4ZM5 10.5a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Z"/></svg>
+                        <input class="mods-search" id="mods-search" type="search" placeholder="Search 140 mods…" autocomplete="off">
+                    </label>
+                    <p class="mods-count" id="mods-count">140 mods</p>
+                </div>
+                <div class="mods-list" id="mods-list">
+                    <details class="mod-item" data-search="[emf] entity model features 3.3-forge-1.20.1 emf is an, optifine format, custom entity model replacement mod available for fabric and forge.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">001</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">[EMF] Entity Model Features</span>
+                                <span class="mod-version">3.3-forge-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>EMF is an, OptiFine format, Custom Entity Model replacement mod available for Fabric and Forge.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="[etf] entity texture features 7.2-forge-1.20.1 emissive, random &amp; custom texture support for entities in resourcepacks just like optifine but for fabric">
+                        <summary class="mod-summary">
+                            <span class="mod-number">002</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">[ETF] Entity Texture Features</span>
+                                <span class="mod-version">7.2-forge-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Emissive, Random &amp; Custom texture support for entities in resourcepacks just like Optifine but for Fabric</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="3d skin layers 1.11.2 render the player skin layer in 3d!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">003</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">3D Skin Layers</span>
+                                <span class="mod-version">1.11.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Render the player skin layer in 3d!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="accessories 1.0.0-beta48+1.20.1 an extendable and data-driven accessory mod for minecraft">
+                        <summary class="mod-summary">
+                            <span class="mod-number">004</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Accessories</span>
+                                <span class="mod-version">1.0.0-beta48+1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>An extendable and data-driven Accessory Mod for Minecraft</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="alex&#039;s mobs 1.22.9 85+ new mobs with stylistic quality above the default game.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">005</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Alex&#039;s Mobs</span>
+                                <span class="mod-version">1.22.9</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>85+ New mobs with stylistic quality above the default game.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="and there was only one bed 1.20.1-1.0 lets multiple players sleep in one bed to skip the night.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">006</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">And There Was Only One Bed</span>
+                                <span class="mod-version">1.20.1-1.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Lets multiple players sleep in one bed to skip the night.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="appleskin 2.5.1+mc1.20.1 food/hunger-related hud improvements">
+                        <summary class="mod-summary">
+                            <span class="mod-number">007</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">AppleSkin</span>
+                                <span class="mod-version">2.5.1+mc1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Food/hunger-related HUD improvements</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="architectury api 9.2.14+forge an intermediary api aimed to ease developing multiplatform mods.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">008</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Architectury API</span>
+                                <span class="mod-version">9.2.14+forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>An intermediary api aimed to ease developing multiplatform mods.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="balm 7.3.42+forge-1.20.1 abstraction layer for multi-loader mods">
+                        <summary class="mod-summary">
+                            <span class="mod-number">009</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Balm</span>
+                                <span class="mod-version">7.3.42+forge-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Abstraction Layer for Multi-Loader Mods</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="bclib 3.0.14 a library mod for the betterx team">
+                        <summary class="mod-summary">
+                            <span class="mod-number">010</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">BCLib</span>
+                                <span class="mod-version">3.0.14</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A Library Mod for the BetterX Team</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="beautiful enchanted books [mod edition] 6.0.0 forget about the boring aspects of enchanted books! now they will have new aspects that are much more beautiful and characteristic of their theme.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">011</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Beautiful Enchanted Books [MOD EDITION]</span>
+                                <span class="mod-version">6.0.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Forget about the boring aspects of enchanted books! Now they will have new aspects that are much more beautiful and characteristic of their theme.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="bed benefits 13.0.4 adds some additional benefits to sleeping.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">012</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Bed Benefits</span>
+                                <span class="mod-version">13.0.4</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds some additional benefits to sleeping.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="bedsheets 1.4+mod customize your bed by adding a banner pattern to the sheets!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">013</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Bedsheets</span>
+                                <span class="mod-version">1.4+mod</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Customize your bed by adding a banner pattern to the sheets!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="better babies 0.6.2+mod makes baby mobs cuter">
+                        <summary class="mod-summary">
+                            <span class="mod-number">014</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Better Babies</span>
+                                <span class="mod-version">0.6.2+mod</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Makes baby mobs cuter</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="better statistics screen 3.12.6+fabric-1.20.1 a minecraft mod that improves the statistics screen and makes it more useful.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">015</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Better Statistics Screen</span>
+                                <span class="mod-version">3.12.6+fabric-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A Minecraft mod that improves the statistics screen and makes it more useful.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="betterf3 7.0.2 betterf3 is a mod that replaces minecraft&#039;s original debug hud with a highly customizable, more human-readable hud.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">016</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">BetterF3</span>
+                                <span class="mod-version">7.0.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>BetterF3 is a mod that replaces Minecraft&#039;s original debug HUD with a highly customizable, more human-readable HUD.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="biolith 1.0.1-beta.1 a biome placement mod focusing on configurability and consistent distribution of modded biomes">
+                        <summary class="mod-summary">
+                            <span class="mod-number">017</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Biolith</span>
+                                <span class="mod-version">1.0.1-beta.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A biome placement mod focusing on configurability and consistent distribution of modded biomes</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="biomes o&#039; plenty 19.0.0.96 adds 50+ unique biomes to enhance your world, with new trees, flowers, and more!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">018</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Biomes O&#039; Plenty</span>
+                                <span class="mod-version">19.0.0.96</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds 50+ unique biomes to enhance your world, with new trees, flowers, and more!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="bookshelf 20.2.15 an open source library for other mods!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">019</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Bookshelf</span>
+                                <span class="mod-version">20.2.15</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>An open source library for other mods!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="borderless fullscreen 2.3.0_01 makes minecraft&#039;s fullscreen mode more configurable">
+                        <summary class="mod-summary">
+                            <span class="mod-number">020</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Borderless Fullscreen</span>
+                                <span class="mod-version">2.3.0_01</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Makes Minecraft&#039;s fullscreen mode more configurable</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="capes 1.5.2+1.20 lets you use capes from optifine, labymod and other cape mods">
+                        <summary class="mod-summary">
+                            <span class="mod-number">021</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Capes</span>
+                                <span class="mod-version">1.5.2+1.20</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Lets you use capes from OptiFine, LabyMod and other cape mods</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="cardinal components api 5.2.3 a data attachment api that is easy, modular, and extremely fast.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">022</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Cardinal Components API</span>
+                                <span class="mod-version">5.2.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A data attachment API that is easy, modular, and extremely fast.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="carry on 2.1.2.7 carry on allows you to pick up tile entities and mobs and carry them around!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">023</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Carry On</span>
+                                <span class="mod-version">2.1.2.7</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Carry On allows you to pick up Tile Entities and Mobs and carry them around!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="cat_jam 1.3.1 makes cats jam to the rhythm of music discs :3">
+                        <summary class="mod-summary">
+                            <span class="mod-number">024</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">cat_jam</span>
+                                <span class="mod-version">1.3.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>makes cats jam to the rhythm of music discs :3</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="chat animation [smooth chat] 1.3.0+forge-1.20.1 makes chat messages appear with a smooth animation.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">025</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Chat Animation [Smooth Chat]</span>
+                                <span class="mod-version">1.3.0+forge-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Makes chat messages appear with a smooth animation.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="chat heads 0.15.7 see who you&#039;re chatting with!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">026</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Chat Heads</span>
+                                <span class="mod-version">0.15.7</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>See who you&#039;re chatting with!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="chunky 1.3.146 pre-generates chunks, quickly and efficiently">
+                        <summary class="mod-summary">
+                            <span class="mod-number">027</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Chunky</span>
+                                <span class="mod-version">1.3.146</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Pre-generates chunks, quickly and efficiently</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="citadel 2.6.3 a lightweight library">
+                        <summary class="mod-summary">
+                            <span class="mod-number">028</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Citadel</span>
+                                <span class="mod-version">2.6.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A Lightweight Library</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="cloth config api 11.1.136+forge configuration library for minecraft mods">
+                        <summary class="mod-summary">
+                            <span class="mod-number">029</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Cloth Config API</span>
+                                <span class="mod-version">11.1.136+forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Configuration Library for Minecraft Mods</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="cluttered 3.0.3-1.20.1 assortment of decor and furniture">
+                        <summary class="mod-summary">
+                            <span class="mod-number">030</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Cluttered</span>
+                                <span class="mod-version">3.0.3-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Assortment of decor and furniture</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="comforts 6.4.0+1.20.1 adds sleeping bags and hammocks for, respectively, portability and turning day to night, without setting new spawns. comes in 16 different colors!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">031</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Comforts</span>
+                                <span class="mod-version">6.4.0+1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds sleeping bags and hammocks for, respectively, portability and turning day to night, without setting new spawns. Comes in 16 different colors!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="controlling 12.0.2 adds a search bar to the key-bindings menu">
+                        <summary class="mod-summary">
+                            <span class="mod-number">032</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Controlling</span>
+                                <span class="mod-version">12.0.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds a search bar to the Key-Bindings menu</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="corgilib 1.20.1-4.0.3.5-forge a library mod containing code used across corgi taco&#039;s mods.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">033</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">CorgiLib</span>
+                                <span class="mod-version">1.20.1-4.0.3.5-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A library mod containing code used across Corgi Taco&#039;s mods.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="coroutil 1.20.1-1.3.7 shared library mod for corosus&#039;s mods">
+                        <summary class="mod-summary">
+                            <span class="mod-number">034</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">CoroUtil</span>
+                                <span class="mod-version">1.20.1-1.3.7</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Shared library mod for Corosus&#039;s mods</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="cristel lib 1.1.6-forge a library mod for easy structure config and runtime datapacks.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">035</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Cristel Lib</span>
+                                <span class="mod-version">1.1.6-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A Library mod for easy structure config and runtime datapacks.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="critters and companions 2.7.1 adds a few new friends to your world!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">036</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Critters and Companions</span>
+                                <span class="mod-version">2.7.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds a few new friends to your world!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="curios api 5.14.1+1.20.1 a flexible and expandable accessory/equipment api for users and developers.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">037</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Curios API</span>
+                                <span class="mod-version">5.14.1+1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A flexible and expandable accessory/equipment API for users and developers.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="data api 0.2+mod tools to aid in datapack creation">
+                        <summary class="mod-summary">
+                            <span class="mod-number">038</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Data API</span>
+                                <span class="mod-version">0.2+mod</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Tools to aid in datapack creation</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="dawn api v5.0.0 api that facilitates the creation of features.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">039</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Dawn API</span>
+                                <span class="mod-version">v5.0.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>API that facilitates the creation of features.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="deep aether 1.20.1-1.1.7 deep aether is an addon for the original version of the aether mod. it aims to add lots of new features to give players a chance to venture deeper into the aether dimension, while also maintaining its original style.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">040</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Deep Aether</span>
+                                <span class="mod-version">1.20.1-1.1.7</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Deep Aether is an addon for the original version of The Aether mod. It aims to add lots of new features to give players a chance to venture deeper into the Aether dimension, while also maintaining its original style.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="deeper and darker 1.3.3-forge+1.20.1 a minecraft mod which features more blocks, items, armors, and hidden mysteries to complement the deep dark biome.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">041</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Deeper and Darker</span>
+                                <span class="mod-version">1.3.3-forge+1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A Minecraft mod which features more blocks, items, armors, and hidden mysteries to complement the Deep Dark biome.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="dungeons and taverns 3.0.3.f+mod a structure datapack adding dungeons, taverns and other structures to find while you explore the world.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">042</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Dungeons and Taverns</span>
+                                <span class="mod-version">3.0.3.f+mod</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A Structure Datapack adding dungeons, taverns and other structures to find while you explore the world.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="eating animation 1.9.61 a mod that adds sprite animations for edible and drinkable items.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">043</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Eating Animation</span>
+                                <span class="mod-version">1.9.61</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A mod that adds sprite animations for edible and drinkable items.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="elysium api 1.20.1-1.1.3 elysium is a library mod with various utilities, built-in features and new data driven systems for both mod-developers and modpack-creators to utilize">
+                        <summary class="mod-summary">
+                            <span class="mod-number">044</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Elysium API</span>
+                                <span class="mod-version">1.20.1-1.1.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Elysium is a library mod with various utilities, built-in features and new data driven systems for both Mod-Developers and Modpack-Creators to utilize</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="embeddium 0.3.31+mc1.20.1 a powerful, mod-friendly, foss client performance mod for neoforge">
+                        <summary class="mod-summary">
+                            <span class="mod-number">045</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Embeddium</span>
+                                <span class="mod-version">0.3.31+mc1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A powerful, mod-friendly, FOSS client performance mod for NeoForge</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="enchantment descriptions 17.1.21 provides a way to get enchantment descriptions from enchanted books.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">046</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Enchantment Descriptions</span>
+                                <span class="mod-version">17.1.21</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Provides a way to get enchantment descriptions from enchanted books.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="enderman overhaul 1.0.4 enderman overhaul adds over 20 new enderman variants, each with their own sounds, models, and animations!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">047</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Enderman Overhaul</span>
+                                <span class="mod-version">1.0.4</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Enderman Overhaul adds over 20 new enderman variants, each with their own sounds, models, and animations!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="enhanced boss bars 1.20.1-1.0.0 new improved boss bars!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">048</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Enhanced Boss Bars</span>
+                                <span class="mod-version">1.20.1-1.0.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>New improved boss bars!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="enhanced cats 1.0.1 extends minecraft vanilla cats&#039; features">
+                        <summary class="mod-summary">
+                            <span class="mod-number">049</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Enhanced Cats</span>
+                                <span class="mod-version">1.0.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Extends Minecraft Vanilla cats&#039; features</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="essential mod 1.4.1.1 enhance your minecraft with one simple mod. host worlds for free, chat with friends, and so much more!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">050</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Essential Mod</span>
+                                <span class="mod-version">1.4.1.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Enhance your Minecraft with one simple mod. Host worlds for free, chat with friends, and so much more!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="euphoria patches 1.9.3-r5.8.1-forge euphoria patches is an add-on for complementary shaders, extending it with more optional features and settings.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">051</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Euphoria Patches</span>
+                                <span class="mod-version">1.9.3-r5.8.1-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Euphoria Patches is an add-on for Complementary Shaders, extending it with more optional features and settings.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="explorify v1.6.5 a simplistic, vanilla-friendly collection of new structures.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">052</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Explorify</span>
+                                <span class="mod-version">v1.6.5</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A simplistic, vanilla-friendly collection of new structures.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="fabric language kotlin 1.13.13+kotlin.2.4.10 this is a mod that enables usage of the kotlin programming language for fabric mods.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">053</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Fabric Language Kotlin</span>
+                                <span class="mod-version">1.13.13+kotlin.2.4.10</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>This is a mod that enables usage of the Kotlin programming language for Fabric mods.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="fairy lights v1.1.5_fabric decorative string lights to light up your world! a fabric &amp; neoforge port.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">054</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Fairy Lights</span>
+                                <span class="mod-version">v1.1.5_fabric</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Decorative string lights to light up your world! A Fabric &amp; NeoForge port.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="falling leaves 1.15.6+1.20.1 adds a neat little particle effect to leaf blocks">
+                        <summary class="mod-summary">
+                            <span class="mod-number">055</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Falling Leaves</span>
+                                <span class="mod-version">1.15.6+1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds a neat little particle effect to leaf blocks</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="ferritecore 6.0.1 memory usage optimizations">
+                        <summary class="mod-summary">
+                            <span class="mod-number">056</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">FerriteCore</span>
+                                <span class="mod-version">6.0.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Memory usage optimizations</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="forge config api port v8.0.3-1.20.1-fabric neoforge&#039;s &amp; forge&#039;s config systems provided to other modding ecosystems. designed for a multiloader architecture.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">057</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Forge Config API Port</span>
+                                <span class="mod-version">v8.0.3-1.20.1-Fabric</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>NeoForge&#039;s &amp; Forge&#039;s config systems provided to other modding ecosystems. Designed for a multiloader architecture.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="forgified fabric api 0.92.6+1.11.15+1.20.1 fabric api implemented on top of neoforge">
+                        <summary class="mod-summary">
+                            <span class="mod-number">058</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Forgified Fabric API</span>
+                                <span class="mod-version">0.92.6+1.11.15+1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Fabric API implemented on top of NeoForge</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="galosphere 1.20.1-1.5.2 an expansion for caves, including new biomes, mobs, and more.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">059</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Galosphere</span>
+                                <span class="mod-version">1.20.1-1.5.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>An expansion for caves, including new biomes, mobs, and more.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="geckolib 4.8.4 a 3d animation library for entities, blocks, items, armor, and more!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">060</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Geckolib</span>
+                                <span class="mod-version">4.8.4</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A 3D animation library for entities, blocks, items, armor, and more!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="geophilic 3.6 a subtle-ish overhaul of vanilla overworld biomes! reworked!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">061</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Geophilic</span>
+                                <span class="mod-version">3.6</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A subtle-ish overhaul of vanilla Overworld biomes! Reworked!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="glitchcore 0.0.1.1 a library mod aimed at abstracting mod loaders and providing various utilities for our mods.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">062</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">GlitchCore</span>
+                                <span class="mod-version">0.0.1.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A library mod aimed at abstracting mod loaders and providing various utilities for our mods.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="gravestone mod forge-1.20.1-1.0.35 places a gravestone with your inventory items inside when you die">
+                        <summary class="mod-summary">
+                            <span class="mod-number">063</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">GraveStone Mod</span>
+                                <span class="mod-version">forge-1.20.1-1.0.35</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Places a gravestone with your inventory items inside when you die</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="handcrafted 3.0.6 make your house a home!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">064</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Handcrafted</span>
+                                <span class="mod-version">3.0.6</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Make your house a home!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="hybrid aquatic 1.6.9-forge hybrid aquatic is a mod that enhances your underwater minecraft experience! explore improved rivers, swamps, oceans, and undersea caves containing a variety of new creatures and blocks to liven up your world!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">065</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Hybrid Aquatic</span>
+                                <span class="mod-version">1.6.9-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Hybrid Aquatic is a mod that enhances your underwater Minecraft experience! Explore improved rivers, swamps, oceans, and undersea caves containing a variety of new creatures and blocks to liven up your world!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="iceberg 1.1.25 a modding library that contains new events, helpers, and utilities to make modder&#039;s lives easier.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">066</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Iceberg</span>
+                                <span class="mod-version">1.1.25</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A modding library that contains new events, helpers, and utilities to make modder&#039;s lives easier.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="incendium legacy 5.3.5 a nether biome overhaul combined with challenging structures to conquer, unique weapons to obtain, and tricky mobs to defeat.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">067</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Incendium Legacy</span>
+                                <span class="mod-version">5.3.5</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A nether biome overhaul combined with challenging structures to conquer, unique weapons to obtain, and tricky mobs to defeat.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="inventory essentials 8.2.19+forge-1.20.1 the most essential inventory tweaks. now with sorting!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">068</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Inventory Essentials</span>
+                                <span class="mod-version">8.2.19+forge-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>The most essential inventory tweaks. Now with sorting!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="invmove 0.9.3+1.20.1-forge adds the ability to walk around while in inventories">
+                        <summary class="mod-summary">
+                            <span class="mod-number">069</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">InvMove</span>
+                                <span class="mod-version">0.9.3+1.20.1-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds the ability to walk around while in inventories</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="jaden&#039;s nether expansion 2.3.5 nether expansion is a vanilla friendly mod that aims to improve &amp; add new content to every aspect of the nether">
+                        <summary class="mod-summary">
+                            <span class="mod-number">070</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Jaden&#039;s Nether Expansion</span>
+                                <span class="mod-version">2.3.5</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Nether Expansion is a Vanilla Friendly Mod that aims to Improve &amp; Add New Content to every aspect of The Nether</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="just enough items (jei) 15.56.0.205 view items and recipes">
+                        <summary class="mod-summary">
+                            <span class="mod-number">071</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Just Enough Items (JEI)</span>
+                                <span class="mod-version">15.56.0.205</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>View Items and Recipes</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="just zoom 2.1.1-1.20.1-forge zoom by pressing a hotkey and adjust the zoom factor with your mouse wheel!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">072</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Just Zoom</span>
+                                <span class="mod-version">2.1.1-1.20.1-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Zoom by pressing a hotkey and adjust the zoom factor with your mouse wheel!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="konkrete 1.8.0-1.20-1.20.1-forge just another boring library mod.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">073</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Konkrete</span>
+                                <span class="mod-version">1.8.0-1.20-1.20.1-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Just another boring library mod.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="kotlin for forge 4.12.0 adds a kotlin language loader and provides some optional utilities.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">074</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Kotlin for Forge</span>
+                                <span class="mod-version">4.12.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds a Kotlin language loader and provides some optional utilities.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="l_ender&#039;s cataclysm 3.31 cataclysm is a mod that adds difficult dungeons, challenging boss-fights and powerful items.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">075</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">L_Ender&#039;s Cataclysm</span>
+                                <span class="mod-version">3.31</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Cataclysm is a mod that adds difficult dungeons, challenging boss-fights and powerful items.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="lambdynamiclights - dynamic lights 4.4.0+1.20.1 adds dynamic lights to minecraft as the most feature-complete and optimized dynamic lighting mod.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">076</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">LambDynamicLights - Dynamic Lights</span>
+                                <span class="mod-version">4.4.0+1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds dynamic lights to Minecraft as the most feature-complete and optimized dynamic lighting mod.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="legendary monsters 2.2.2 new early, middle, late game bosses">
+                        <summary class="mod-summary">
+                            <span class="mod-number">077</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Legendary Monsters</span>
+                                <span class="mod-version">2.2.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>New early, middle, late game bosses</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="lionfish-api 3.0 very light animation api">
+                        <summary class="mod-summary">
+                            <span class="mod-number">078</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Lionfish-API</span>
+                                <span class="mod-version">3.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Very Light Animation Api</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="lithostitched 1.4.11-forge-1.20 library mod with new configurability and compatibility enhancements for worldgen">
+                        <summary class="mod-summary">
+                            <span class="mod-number">079</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Lithostitched</span>
+                                <span class="mod-version">1.4.11-forge-1.20</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Library mod with new configurability and compatibility enhancements for worldgen</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="lootr 0.7.35.94 a mod that makes it so nobody misses out on loot! all loot chests are instanced per player and visually unique.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">080</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Lootr</span>
+                                <span class="mod-version">0.7.35.94</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A mod that makes it so nobody misses out on Loot! All loot chests are instanced per player and visually unique.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="macaw&#039;s paintings 1.1.0 adds custom drawn paintings to fit in your world!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">081</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Macaw&#039;s Paintings</span>
+                                <span class="mod-version">1.1.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds custom drawn paintings to fit in your world!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="mcef (minecraft chromium embedded framework) 2.1.6-1.20.1 mcef (minecraft chromium embedded framework) is a mod and library for adding the chromium web browser into minecraft.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">082</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">MCEF (Minecraft Chromium Embedded Framework)</span>
+                                <span class="mod-version">2.1.6-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>MCEF (Minecraft Chromium Embedded Framework) is a mod and library for adding the Chromium web browser into Minecraft.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="mod menu 7.2.2 adds a mod menu to view the list of mods you have installed.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">083</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Mod Menu</span>
+                                <span class="mod-version">7.2.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds a mod menu to view the list of mods you have installed.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="moog&#039;s structure lib (moogs_structures) 3.1.2 this is a library mod for the moogs structure series">
+                        <summary class="mod-summary">
+                            <span class="mod-number">084</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Moog&#039;s Structure Lib (moogs_structures)</span>
+                                <span class="mod-version">3.1.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>This is a library mod for the Moogs Structure series</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="mouse tweaks 1.20.1-2.25.1-forge enhances inventory management by adding various functions to the mouse buttons.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">085</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Mouse Tweaks</span>
+                                <span class="mod-version">1.20.1-2.25.1-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Enhances inventory management by adding various functions to the mouse buttons.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="mowzie&#039;s mobs 1.8.2 mowzie&#039;s mobs adds a variety of fictional creatures to minecraft, priding itself in unique ai, rich atmosphere, and fluid animations. prove your might against new bosses and enemies and claim their magical abilities as your own.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">086</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Mowzie&#039;s Mobs</span>
+                                <span class="mod-version">1.8.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Mowzie&#039;s Mobs adds a variety of fictional creatures to Minecraft, priding itself in unique AI, rich atmosphere, and fluid animations. Prove your might against new bosses and enemies and claim their magical abilities as your own.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="mvs - moog&#039;s voyager structures 5.1.0 adds 130+ vanilla style structures to your world to bring it alive, using vanilla blocks. includes dungeons and enemies to fight!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">087</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">MVS - Moog&#039;s Voyager Structures</span>
+                                <span class="mod-version">5.1.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>adds 130+ vanilla style structures to your world to bring it alive, using vanilla blocks. Includes dungeons and enemies to fight!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="natural sizes 1.2 a lightweight vanilla+ mod that adds natural variety to your world by subtly randomizing the size of every spawned mob.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">088</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Natural Sizes</span>
+                                <span class="mod-version">1.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A lightweight Vanilla+ mod that adds natural variety to your world by subtly randomizing the size of every spawned mob.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="naturalist 5.0pre4+forge-1.20.1 adds 47 animals *(and 66 variants)* to your world with immersive behaviors and drops.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">089</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Naturalist</span>
+                                <span class="mod-version">5.0pre4+forge-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds 47 animals *(and 66 variants)* to your world with immersive behaviors and drops.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="nature&#039;s spirit 2.2.5-1.20.1 a minecraft mod which enhances world generation with new biomes, blocks, and items">
+                        <summary class="mod-summary">
+                            <span class="mod-number">090</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Nature&#039;s Spirit</span>
+                                <span class="mod-version">2.2.5-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A minecraft mod which enhances world generation with new biomes, blocks, and items</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="necronomicon api 1.6.0+1.20.1 a personal utility library for my mods.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">091</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Necronomicon API</span>
+                                <span class="mod-version">1.6.0+1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A personal utility library for my mods.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="night lights 1.1 a mod that adds a variety of new light sources to minecraft!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">092</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Night Lights</span>
+                                <span class="mod-version">1.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A mod that adds a variety of new light sources to Minecraft!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="not enough animations 1.12.4 bringing first-person animations to the third-person">
+                        <summary class="mod-summary">
+                            <span class="mod-number">093</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Not Enough Animations</span>
+                                <span class="mod-version">1.12.4</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Bringing first-person animations to the third-person</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="oculus 1.20.1-1.8.0 unofficial fork of &quot;iris&quot;, made to work with fml">
+                        <summary class="mod-summary">
+                            <span class="mod-number">094</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Oculus</span>
+                                <span class="mod-version">1.20.1-1.8.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Unofficial Fork of &quot;Iris&quot;, made to work with FML</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="oh the biomes we&#039;ve gone 1.8.0-forge an astounding sequel to the original byg mod for 1.20.1+ with over 50+ biomes ranging from the magical to the realistic and all breathtaking!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">095</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Oh The Biomes We&#039;ve Gone</span>
+                                <span class="mod-version">1.8.0-Forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>An astounding sequel to the original BYG mod for 1.20.1+ with over 50+ biomes ranging from the magical to the realistic and all breathtaking!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="oh the trees you&#039;ll grow 1.20.1-1.7.0-forge tree library used by popular mods such as oh the biomes you&#039;ll go.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">096</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Oh The Trees You&#039;ll Grow</span>
+                                <span class="mod-version">1.20.1-1.7.0-Forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Tree library used by popular mods such as Oh The Biomes You&#039;ll Go.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="open parties and claims forge-1.20.1-0.30.3 adds the ability to claim chunks and make player parties, integrates with xaero&#039;s minimap and world map">
+                        <summary class="mod-summary">
+                            <span class="mod-number">097</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Open Parties and Claims</span>
+                                <span class="mod-version">forge-1.20.1-0.30.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds the ability to claim chunks and make player parties, integrates with Xaero&#039;s Minimap and World Map</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="oωo (owo-lib) 0.11.2+1.20 a general utility, gui and config library for modding on fabric and quilt">
+                        <summary class="mod-summary">
+                            <span class="mod-number">098</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">oωo (owo-lib)</span>
+                                <span class="mod-version">0.11.2+1.20</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A general utility, GUI and config library for modding on Fabric and Quilt</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="particle rain v4-beta.11+1.20.1-forge replaces weather with prettier particle effects">
+                        <summary class="mod-summary">
+                            <span class="mod-number">099</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Particle Rain</span>
+                                <span class="mod-version">v4-beta.11+1.20.1-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Replaces weather with prettier particle effects</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="pehkui 3.8.2+1.20.1-forge lets you change the size of most entities, shrinking their scale smaller or growing them larger">
+                        <summary class="mod-summary">
+                            <span class="mod-number">100</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Pehkui</span>
+                                <span class="mod-version">3.8.2+1.20.1-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Lets you change the size of most entities, shrinking their scale smaller or growing them larger</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="plushie mod 1.4.0 adds many cute plushies to the game!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">101</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Plushie Mod</span>
+                                <span class="mod-version">1.4.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds many cute plushies to the game!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="prism 1.0.5 a library all about color! provides lots of color-related functionality for dependent mods.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">102</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Prism</span>
+                                <span class="mod-version">1.0.5</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A library all about color! Provides lots of color-related functionality for dependent mods.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="promenade v4.1.1 fancy and simplistic biomes and structures! (includes capybaras)">
+                        <summary class="mod-summary">
+                            <span class="mod-number">103</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Promenade</span>
+                                <span class="mod-version">v4.1.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Fancy and simplistic biomes and structures! (includes capybaras)</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="radium 0.12.4 radium is an unofficial fork of caffeinemc&#039;s &quot;lithium&quot;, made to work with forge mod loader.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">104</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Radium</span>
+                                <span class="mod-version">0.12.4</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Radium is an Unofficial Fork of CaffeineMC&#039;s &quot;Lithium&quot;, made to work with Forge Mod Loader.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="regions unexplored f-0.5.6+1.20.1 a stack of new biomes spread across the overworld and nether!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">105</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Regions Unexplored</span>
+                                <span class="mod-version">F-0.5.6+1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A stack of new biomes spread across the Overworld and Nether!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="resourceful config 2.1.3 resourceful config is a mod that allows for developers to make cross-platform configs">
+                        <summary class="mod-summary">
+                            <span class="mod-number">106</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Resourceful Config</span>
+                                <span class="mod-version">2.1.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Resourceful Config is a mod that allows for developers to make cross-platform configs</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="resourceful lib 2.1.29 resourceful lib">
+                        <summary class="mod-summary">
+                            <span class="mod-number">107</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Resourceful Lib</span>
+                                <span class="mod-version">2.1.29</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Resourceful Lib</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="resourcify 1.8.5 in-game resource pack, data pack and shader browser and updater.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">108</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Resourcify</span>
+                                <span class="mod-version">1.8.5</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>In-game resource pack, data pack and shader browser and updater.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="searchables 1.0.3 searchables is a library mod that adds helper methods that allow for searching and filtering elements based on components, as well as offering built in auto-complete functionality.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">109</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Searchables</span>
+                                <span class="mod-version">1.0.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Searchables is a library mod that adds helper methods that allow for searching and filtering elements based on components, as well as offering built in auto-complete functionality.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="simple hats 1.20.1-neo-0.4.0a simple hats is an expandable cosmetic hat mod that allows users to define their own hats with options such as variants, dyes, particle effects, and seasons.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">110</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Simple Hats</span>
+                                <span class="mod-version">1.20.1-Neo-0.4.0a</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Simple Hats is an expandable cosmetic hat mod that allows users to define their own hats with options such as variants, dyes, particle effects, and seasons.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="simple voice chat forge-1.20.1-2.6.22 a working voice chat in minecraft!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">111</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Simple Voice Chat</span>
+                                <span class="mod-version">forge-1.20.1-2.6.22</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A working voice chat in Minecraft!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="sophisticated backpacks 1.20.1-3.24.67.2109 yet another backpack mod this time with backpack you can place in world, color in different color combinations, upgrade with more inventory and enhance with many functional upgrades">
+                        <summary class="mod-summary">
+                            <span class="mod-number">112</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Sophisticated Backpacks</span>
+                                <span class="mod-version">1.20.1-3.24.67.2109</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Yet another backpack mod this time with backpack you can place in world, color in different color combinations, upgrade with more inventory and enhance with many functional upgrades</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="sophisticated core 1.20.1-1.3.84.2308 library mod for sophisticated mods">
+                        <summary class="mod-summary">
+                            <span class="mod-number">113</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Sophisticated Core</span>
+                                <span class="mod-version">1.20.1-1.3.84.2308</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Library mod for Sophisticated mods</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="spartan weaponry 1.20.1-3.2.1 weapons galore! a whole new arsenal of weaponry made for minecraft!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">114</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Spartan Weaponry</span>
+                                <span class="mod-version">1.20.1-3.2.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Weapons Galore! A whole new arsenal of weaponry made for Minecraft!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="stellarity 2.0e extreme rehaul of the end in a unique fantasy style, combined with biome and structure overhauls, new items, weapons and plenty of other content to discover.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">115</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Stellarity</span>
+                                <span class="mod-version">2.0e</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Extreme rehaul of The End in a unique fantasy style, combined with biome and structure overhauls, new items, weapons and plenty of other content to discover.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="tcdcommons api 3.12.3.3+fabric-1.20.1 thecsdev&#039;s personal library mod for the minecraft modding environment.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">116</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">TCDCommons API</span>
+                                <span class="mod-version">3.12.3.3+fabric-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>TheCSDev&#039;s personal library mod for the Minecraft modding environment.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="terrablender 3.0.1.10 a library mod for adding biomes in a simple and compatible manner!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">117</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">TerraBlender</span>
+                                <span class="mod-version">3.0.1.10</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A library mod for adding biomes in a simple and compatible manner!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="terralith 2.5.4 explore almost 100 new biomes consisting of both realism and light fantasy, using just vanilla blocks. complete with several immersive structures to compliment the overhauled terrain.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">118</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Terralith</span>
+                                <span class="mod-version">2.5.4</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Explore almost 100 new biomes consisting of both realism and light fantasy, using just Vanilla blocks. Complete with several immersive structures to compliment the overhauled terrain.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="text placeholder api 2.1.4+1.20.1 placeholder and text manipulation library for your minecraft mods.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">119</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Text Placeholder API</span>
+                                <span class="mod-version">2.1.4+1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Placeholder and Text manipulation library for your Minecraft mods.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="the aether 1.20.1-1.5.2-neoforge the aether team presents the original aether mod! maintained and kept up to date for modern versions of minecraft and fully compatible with multiplayer!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">120</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">The Aether</span>
+                                <span class="mod-version">1.20.1-1.5.2-neoforge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>The Aether Team presents the original Aether mod! Maintained and kept up to date for modern versions of Minecraft and fully compatible with multiplayer!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="towns and towers 1.12 spice up your world with new villages, pillager outposts, and even new ships!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">121</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Towns and Towers</span>
+                                <span class="mod-version">1.12</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Spice up your world with new villages, pillager outposts, and even new ships!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="traveler&#039;s titles 1.20-forge-4.0.2 epic, rpg-like titles when entering biomes &amp; dimensions!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">122</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Traveler&#039;s Titles</span>
+                                <span class="mod-version">1.20-Forge-4.0.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Epic, RPG-like titles when entering biomes &amp; dimensions!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="trinkets and baubles reforked 1.3.1 this is an interesting accessory mod that adds a variety of accessories to minecraft.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">123</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Trinkets and Baubles Reforked</span>
+                                <span class="mod-version">1.3.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>This is an interesting accessory mod that adds a variety of accessories to Minecraft.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="wavey capes 1.10.2 the cape shouldn&#039;t be a static slab">
+                        <summary class="mod-summary">
+                            <span class="mod-number">124</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Wavey Capes</span>
+                                <span class="mod-version">1.10.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>The cape shouldn&#039;t be a static slab</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="waystones 14.1.20+forge-1.20.1 teleport from waystone to waystone or craft magical scrolls to warp.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">125</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Waystones</span>
+                                <span class="mod-version">14.1.20+forge-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Teleport from waystone to waystone or craft magical scrolls to warp.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="webdisplays 2.0.2-1.20.1 a minecraft mod for creating and interacting with web browsers.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">126</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">WebDisplays</span>
+                                <span class="mod-version">2.0.2-1.20.1</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A Minecraft mod for creating and interacting with web browsers.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="what are they up to (watut) 1.20.1-1.2.3 lets you see if players are typing, in a gui, idle, with cool ingame visuals">
+                        <summary class="mod-summary">
+                            <span class="mod-number">127</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">What Are They Up To (Watut)</span>
+                                <span class="mod-version">1.20.1-1.2.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Lets you see if players are typing, in a GUI, idle, with cool ingame visuals</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="xaero&#039;s minimap forge-1.20.1-26.4.2 displays a map of the nearby world terrain, players, mobs, entities in the corner of your screen. lets you create waypoints which help you find the locations you&#039;ve marked.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">128</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Xaero&#039;s Minimap</span>
+                                <span class="mod-version">forge-1.20.1-26.4.2</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Displays a map of the nearby world terrain, players, mobs, entities in the corner of your screen. Lets you create waypoints which help you find the locations you&#039;ve marked.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="xaero&#039;s world map forge-1.20.1-1.45.0 adds a full screen world map which shows you what you have explored in the world. works great together with xaero&#039;s minimap.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">129</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">Xaero&#039;s World Map</span>
+                                <span class="mod-version">forge-1.20.1-1.45.0</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds a full screen world map which shows you what you have explored in the world. Works great together with Xaero&#039;s Minimap.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yetanotherconfiglib (yacl) 3.6.6+1.20.1-forge a builder-based configuration library for minecraft!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">130</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YetAnotherConfigLib (YACL)</span>
+                                <span class="mod-version">3.6.6+1.20.1-forge</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A builder-based configuration library for Minecraft!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yung&#039;s api 1.20-forge-4.0.6 library mod for yung&#039;s mods.">
+                        <summary class="mod-summary">
+                            <span class="mod-number">131</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YUNG&#039;s API</span>
+                                <span class="mod-version">1.20-Forge-4.0.6</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Library mod for YUNG&#039;s mods.</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yung&#039;s better desert temples 1.20-forge-3.0.3 a complete redesign of minecraft&#039;s desert temples!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">132</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YUNG&#039;s Better Desert Temples</span>
+                                <span class="mod-version">1.20-Forge-3.0.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A complete redesign of Minecraft&#039;s desert temples!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yung&#039;s better dungeons 1.20-forge-4.0.4 a complete redesign of minecraft&#039;s dungeons!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">133</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YUNG&#039;s Better Dungeons</span>
+                                <span class="mod-version">1.20-Forge-4.0.4</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A complete redesign of Minecraft&#039;s dungeons!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yung&#039;s better jungle temples 1.20-forge-2.0.5 a complete redesign of minecraft&#039;s jungle temples!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">134</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YUNG&#039;s Better Jungle Temples</span>
+                                <span class="mod-version">1.20-Forge-2.0.5</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A complete redesign of Minecraft&#039;s jungle temples!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yung&#039;s better mineshafts 1.20-forge-4.0.4 a long-awaited and much-needed abandoned mineshaft overhaul!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">135</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YUNG&#039;s Better Mineshafts</span>
+                                <span class="mod-version">1.20-Forge-4.0.4</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A long-awaited and much-needed abandoned mineshaft overhaul!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yung&#039;s better nether fortresses 1.20-forge-2.0.6 a complete redesign of minecraft&#039;s nether fortresses!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">136</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YUNG&#039;s Better Nether Fortresses</span>
+                                <span class="mod-version">1.20-Forge-2.0.6</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A complete redesign of Minecraft&#039;s Nether fortresses!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yung&#039;s better ocean monuments 1.20-forge-3.0.4 a complete redesign of minecraft&#039;s ocean monuments!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">137</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YUNG&#039;s Better Ocean Monuments</span>
+                                <span class="mod-version">1.20-Forge-3.0.4</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>A complete redesign of Minecraft&#039;s ocean monuments!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yung&#039;s better witch huts 1.20-forge-3.0.3 adds overhauled witch huts to swamps!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">138</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YUNG&#039;s Better Witch Huts</span>
+                                <span class="mod-version">1.20-Forge-3.0.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds overhauled witch huts to swamps!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yung&#039;s bridges 1.20-forge-4.0.3 adds beautiful naturally generated bridges throughout the world!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">139</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YUNG&#039;s Bridges</span>
+                                <span class="mod-version">1.20-Forge-4.0.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Adds beautiful naturally generated bridges throughout the world!</p>
+                        </div>
+                    </details>
+                    <details class="mod-item" data-search="yung&#039;s extras 1.20-forge-4.0.3 extra structures, features, and vanilla+ content suitable for any modpack!">
+                        <summary class="mod-summary">
+                            <span class="mod-number">140</span>
+                            <span class="mod-heading">
+                                <span class="mod-name">YUNG&#039;s Extras</span>
+                                <span class="mod-version">1.20-Forge-4.0.3</span>
+                            </span>
+                            <span class="mod-chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="mod-description">
+                            <p>Extra structures, features, and vanilla+ content suitable for any modpack!</p>
+                        </div>
+                    </details>
+                    <p class="mods-empty" id="mods-empty" hidden>No mods match your search.</p>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -791,25 +2875,68 @@
         const modalTitle = document.getElementById('modal-title');
         const modalCopy = document.getElementById('modal-copy');
         const modalClose = document.getElementById('modal-close');
+        const modalMods = document.getElementById('mods-content');
+        const modsSearch = document.getElementById('mods-search');
+        const modsCount = document.getElementById('mods-count');
+        const modsEmpty = document.getElementById('mods-empty');
+        const modItems = [...document.querySelectorAll('.mod-item')];
         const panelButtons = document.querySelectorAll('[data-panel]');
         let lastPanelButton = null;
 
+        const filterMods = () => {
+            const query = modsSearch.value.trim().toLowerCase();
+            let visibleCount = 0;
+
+            modItems.forEach((item) => {
+                const visible = !query || item.dataset.search.includes(query);
+                item.hidden = !visible;
+                if (visible) visibleCount += 1;
+            });
+
+            modsCount.textContent = query ? `${visibleCount} of ${modItems.length} mods` : `${modItems.length} mods`;
+            modsEmpty.hidden = visibleCount !== 0;
+        };
+
         const openInfoModal = (button) => {
+            const showsMods = button.dataset.panel === 'mods';
             lastPanelButton = button;
             modalTitle.textContent = button.dataset.title;
             modalCopy.textContent = button.dataset.copy;
+            modalCopy.hidden = showsMods;
+            modalMods.hidden = !showsMods;
+            infoModal.classList.toggle('modal--mods', showsMods);
             infoModal.classList.add('open');
             infoModal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
-            modalClose.focus();
+
+            if (showsMods) {
+                modsSearch.value = '';
+                filterMods();
+            }
+
+            requestAnimationFrame(() => {
+                (showsMods ? modsSearch : modalClose).focus();
+            });
         };
 
         const closeInfoModal = () => {
             infoModal.classList.remove('open');
             infoModal.setAttribute('aria-hidden', 'true');
             document.body.classList.remove('modal-open');
+            modItems.forEach((item) => item.open = false);
             lastPanelButton?.focus();
         };
+
+        modsSearch.addEventListener('input', filterMods);
+
+        modItems.forEach((item) => {
+            item.addEventListener('toggle', () => {
+                if (!item.open) return;
+                modItems.forEach((otherItem) => {
+                    if (otherItem !== item) otherItem.open = false;
+                });
+            });
+        });
 
         panelButtons.forEach((button) => {
             button.addEventListener('click', () => openInfoModal(button));
