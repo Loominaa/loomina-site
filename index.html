@@ -813,6 +813,31 @@
             border: 0;
         }
 
+
+        .install-content{position:relative;min-height:0;display:flex;flex:1;flex-direction:column;gap:14px;margin-top:18px;padding-right:5px;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:rgba(255,183,217,.45) transparent;scrollbar-width:thin}
+        .install-content[hidden]{display:none}
+        .install-intro{color:#efdbe6;font-size:.9rem;line-height:1.6}.install-intro strong{color:var(--accent)}
+        .install-steps{display:grid;gap:9px;list-style:none}
+        .install-step{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;padding:13px 14px;border:1px solid rgba(255,221,238,.12);border-radius:14px;background:rgba(255,255,255,.038)}
+        .install-step-number{width:30px;height:30px;display:grid;place-items:center;border:1px solid rgba(255,183,217,.38);border-radius:50%;color:#2a1025;background:var(--accent);font-size:.75rem;font-weight:850;box-shadow:0 0 17px rgba(255,112,181,.18)}
+        .install-step h3{color:#fff1f8;font-size:.9rem;line-height:1.25}.install-step p{margin-top:5px;color:#d8becd;font-size:.79rem;line-height:1.55}
+        .install-step code{padding:1px 5px;border:1px solid rgba(255,221,238,.13);border-radius:5px;color:#ffd8eb;background:rgba(255,255,255,.06);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.76rem}
+        .install-link{width:fit-content;display:inline-flex;align-items:center;gap:6px;margin-top:9px;padding:7px 10px;border:1px solid rgba(255,183,217,.34);border-radius:9px;color:#ffd8eb;background:rgba(255,112,181,.1);font-size:.75rem;font-weight:750;text-decoration:none;transition:transform 180ms ease,border-color 180ms ease,background 180ms ease}
+        .install-link:hover,.install-link:focus-visible{transform:translateY(-1px);border-color:rgba(255,183,217,.65);background:rgba(255,112,181,.18);outline:none}
+        .ram-callout{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid rgba(195,119,255,.32);border-radius:14px;background:linear-gradient(135deg,rgba(161,72,232,.15),rgba(255,112,181,.08))}
+        .ram-callout>span{width:34px;height:34px;display:grid;place-items:center;flex:0 0 auto;border-radius:10px;color:#e5c4ff;background:rgba(161,72,232,.18)}
+        .ram-callout strong{color:#f3dcff;font-size:.84rem}.ram-callout p{margin-top:3px;color:#d8becd;font-size:.76rem;line-height:1.45}
+        .ram-details{margin-bottom:2px;border:1px solid rgba(255,221,238,.15);border-radius:14px;background:rgba(255,255,255,.038);overflow:hidden}
+        .ram-details>summary{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 14px;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}.ram-details>summary::-webkit-details-marker{display:none}
+        .ram-details summary small{display:block;margin-bottom:3px;color:var(--accent);font-size:.61rem;font-weight:780;letter-spacing:.1em;text-transform:uppercase}.ram-details summary strong{color:#fff1f8;font-size:.9rem}
+        .ram-action{display:inline-flex;align-items:center;gap:7px;flex:0 0 auto;color:#ffd8eb;font-size:.7rem;font-weight:720}.ram-action svg{width:16px;height:16px;transition:transform 240ms ease}.ram-close{display:none}.ram-details[open] .ram-open{display:none}.ram-details[open] .ram-close{display:inline}.ram-details[open] .ram-action svg{transform:rotate(180deg)}
+        .ram-answer{padding:0 14px 15px 48px;animation:details-in 240ms ease both}.ram-answer ol{display:grid;gap:8px;color:#e7cedd;font-size:.78rem;line-height:1.5}
+        .ram-guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:14px}.ram-guide div{min-width:0;display:flex;flex-direction:column;gap:3px;padding:10px;border:1px solid rgba(255,221,238,.11);border-radius:10px;background:rgba(255,255,255,.035)}.ram-guide div.recommended{border-color:rgba(102,228,154,.35);background:rgba(102,228,154,.08)}
+        .ram-guide span{color:#caaabd;font-size:.63rem}.ram-guide strong{color:#fff1f8;font-size:.85rem}.ram-guide small{color:#a98299;font-size:.59rem}.ram-guide .recommended small{color:#a8eec0}
+        .ram-warning{margin-top:12px;color:#d8becd;font-size:.72rem;line-height:1.5}.ram-warning strong{color:#ffc1bd}
+        @keyframes details-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+        @media(max-width:560px){.install-step{grid-template-columns:30px minmax(0,1fr);gap:10px;padding:12px}.install-step-number{width:28px;height:28px}.ram-answer{padding-left:36px;padding-right:12px}.ram-guide{grid-template-columns:1fr}.ram-action{font-size:0}.ram-action svg{width:19px;height:19px}}
+
         .modal.modal--mods .modal-panel {
             width: min(100%, 760px);
             height: min(82dvh, 760px);
@@ -1258,7 +1283,7 @@
             </div>
 
             <nav class="socials" aria-label="Modpack navigation">
-                <button class="social" type="button" data-panel="how-to-install" data-title="How to install" data-copy="Installation instructions will appear here." aria-label="Open How to install">
+                <button class="social" type="button" data-panel="how-to-install" data-title="How to install" data-copy="Install the Modrinth App and import the Kash Kittens modpack from Discord." aria-label="Open How to install">
                     <span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img"><path fill="currentColor" d="M11 3h2v10.2l3.6-3.6L18 11l-6 6-6-6 1.4-1.4 3.6 3.6V3Zm-6 16h14v2H5v-2Z"/></svg></span>
                     <span class="social-name">How to install</span>
                 </button>
@@ -1300,6 +1325,32 @@
             <p class="modal-kicker">Kash Kittens</p>
             <h2 class="modal-title" id="modal-title"></h2>
             <p class="modal-copy" id="modal-copy"></p>
+            <div class="install-content" id="install-content" hidden>
+                <p class="install-intro">Follow these steps to install the Modrinth App and add the Kash Kittens modpack. <strong>The modpack used for this server is available in the Discord.</strong></p>
+                <ol class="install-steps">
+                    <li class="install-step"><span class="install-step-number">1</span><div><h3>Download the Modrinth App</h3><p>Open the official Modrinth App page, choose your operating system, and run the installer.</p><a class="install-link" href="https://modrinth.com/app" target="_blank" rel="noopener noreferrer">Download Modrinth App <span aria-hidden="true">↗</span></a></div></li>
+                    <li class="install-step"><span class="install-step-number">2</span><div><h3>Sign in to Minecraft</h3><p>Open Modrinth and sign in with the Microsoft account that owns Minecraft: Java Edition.</p></div></li>
+                    <li class="install-step"><span class="install-step-number">3</span><div><h3>Download the modpack from Discord</h3><p>Open the server Discord, find the latest Kash Kittens modpack post, and download the file ending in <code>.mrpack</code>. Keep it as an <code>.mrpack</code>—do not unzip it.</p></div></li>
+                    <li class="install-step"><span class="install-step-number">4</span><div><h3>Import the modpack</h3><p>In Modrinth, open <strong>Library</strong>, press the <strong>+</strong> button, choose <strong>From file</strong>, and select the downloaded <code>.mrpack</code>. Wait while everything installs.</p></div></li>
+                    <li class="install-step"><span class="install-step-number">5</span><div><h3>Launch the pack</h3><p>Open the new Kash Kittens instance and press <strong>Play</strong>. The first launch may take longer than normal.</p></div></li>
+                </ol>
+                <div class="ram-callout"><span aria-hidden="true">◆</span><div><strong>Allocate RAM before playing</strong><p>This is a large modpack. We recommend <strong>8 GB</strong>; use at least <strong>6 GB</strong> when possible.</p></div></div>
+                <details class="ram-details" id="ram-details">
+                    <summary><span><small>Performance setup</small><strong>How to allocate RAM</strong></span><span class="ram-action" aria-hidden="true"><span class="ram-open">Open tutorial</span><span class="ram-close">Close tutorial</span><svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+                    <div class="ram-answer">
+                        <ol>
+                            <li>Go to <strong>Library</strong> and open the Kash Kittens instance.</li>
+                            <li>Click the instance <strong>Settings</strong> cog in the top-right.</li>
+                            <li>Select <strong>Java and memory</strong>.</li>
+                            <li>Enable <strong>Custom memory allocation</strong>.</li>
+                            <li>Set <strong>Allocated Memory</strong> to <strong>8192 MiB</strong> for 8 GB, or <strong>6144 MiB</strong> for 6 GB.</li>
+                            <li>Return to the instance and restart it before pressing <strong>Play</strong>.</li>
+                        </ol>
+                        <div class="ram-guide"><div><span>8 GB system</span><strong>4–5 GB</strong><small>May struggle</small></div><div class="recommended"><span>16 GB system</span><strong>6–8 GB</strong><small>Recommended</small></div><div><span>32+ GB system</span><strong>8–10 GB</strong><small>Plenty</small></div></div>
+                        <p class="ram-warning"><strong>Do not allocate all of your computer's RAM.</strong> Leave at least 4 GB for Windows, Discord, and other apps.</p>
+                    </div>
+                </details>
+            </div>
             <div class="mods-content" id="mods-content" hidden>
                 <div class="mods-toolbar">
                     <label class="mods-search-wrap">
@@ -4910,6 +4961,7 @@
         const modalTitle = document.getElementById('modal-title');
         const modalCopy = document.getElementById('modal-copy');
         const modalClose = document.getElementById('modal-close');
+        const modalInstall = document.getElementById('install-content');
         const modalMods = document.getElementById('mods-content');
         const modalBosses = document.getElementById('bosses-content');
         const modsSearch = document.getElementById('mods-search');
@@ -4917,6 +4969,7 @@
         const modsEmpty = document.getElementById('mods-empty');
         const modItems = [...document.querySelectorAll('.mods-list .mod-item')];
         const bossItems = [...document.querySelectorAll('.bosses-content .boss-item')];
+        const ramDetails = document.getElementById('ram-details');
         const panelButtons = document.querySelectorAll('[data-panel]');
         let lastPanelButton = null;
 
@@ -4935,15 +4988,17 @@
         };
 
         const openInfoModal = (button) => {
+            const showsInstall = button.dataset.panel === 'how-to-install';
             const showsMods = button.dataset.panel === 'mods';
             const showsBosses = button.dataset.panel === 'bosses';
             lastPanelButton = button;
             modalTitle.textContent = button.dataset.title;
             modalCopy.textContent = button.dataset.copy;
-            modalCopy.hidden = showsMods || showsBosses;
+            modalCopy.hidden = showsInstall || showsMods || showsBosses;
+            modalInstall.hidden = !showsInstall;
             modalMods.hidden = !showsMods;
             modalBosses.hidden = !showsBosses;
-            infoModal.classList.toggle('modal--mods', showsMods || showsBosses);
+            infoModal.classList.toggle('modal--mods', showsInstall || showsMods || showsBosses);
             infoModal.classList.add('open');
             infoModal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
@@ -4954,7 +5009,7 @@
             }
 
             requestAnimationFrame(() => {
-                (showsMods ? modsSearch : showsBosses ? bossItems[0].querySelector('summary') : modalClose).focus();
+                (showsInstall ? modalInstall.querySelector('.install-link') : showsMods ? modsSearch : showsBosses ? bossItems[0].querySelector('summary') : modalClose).focus();
             });
         };
 
@@ -4964,6 +5019,7 @@
             document.body.classList.remove('modal-open');
             modItems.forEach((item) => item.open = false);
             bossItems.forEach((item) => item.open = false);
+            if (ramDetails) ramDetails.open = false;
             lastPanelButton?.focus();
         };
 
