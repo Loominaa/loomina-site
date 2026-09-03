@@ -577,6 +577,71 @@
         }
 
 
+
+        .bosses-content {
+            position: relative;
+            min-height: 0;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            margin-top: 18px;
+        }
+
+        .bosses-content[hidden] {
+            display: none;
+        }
+
+        .bosses-intro {
+            margin-bottom: 14px;
+            color: #efdbe6;
+            font-size: 0.86rem;
+            line-height: 1.5;
+        }
+
+        .bosses-list {
+            min-height: 0;
+            display: grid;
+            flex: 1;
+            align-content: start;
+            gap: 20px;
+            padding-right: 5px;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            scrollbar-color: rgba(255, 183, 217, 0.45) transparent;
+            scrollbar-width: thin;
+        }
+
+        .boss-group {
+            display: grid;
+            gap: 8px;
+        }
+
+        .boss-group-heading {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 8px 4px;
+            background: rgba(43, 15, 36, 0.96);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .boss-group-heading h3 {
+            color: var(--accent);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .boss-group-heading span {
+            color: #a77c96;
+            font-size: 0.68rem;
+        }
+
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -3469,6 +3534,570 @@
                     <p class="mods-empty" id="mods-empty" hidden>No mods match your search.</p>
                 </div>
             </div>
+            <div class="bosses-content" id="bosses-content" hidden>
+                <p class="bosses-intro">29 bosses and minibosses added by 11 mods in this pack.</p>
+                <div class="bosses-list">
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>Alex&#039;s Mobs</h3>
+                            <span>1 encounter</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">001</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Void Worm</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A gigantic segmented creature that tears through the End using portals, charges, and void projectiles.</p>
+                            </div>
+                        </details>
+                    </section>
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>Deep Aether</h3>
+                            <span>1 encounter</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">002</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Eye of the Storm</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>The storm-powered boss of the Brass Dungeon, fought as a large airborne encounter.</p>
+                            </div>
+                        </details>
+                    </section>
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>Deeper and Darker</h3>
+                            <span>1 encounter</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">003</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Stalker</span>
+                                    <span class="mod-version">Miniboss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A dangerous sculk miniboss encountered through Ancient Temple content and trapped Ancient Vases.</p>
+                            </div>
+                        </details>
+                    </section>
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>Galosphere</h3>
+                            <span>1 encounter</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">004</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Berserker</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A heavy-hitting boss summoned in the Pink Salt Shrine that fights with crushing melee attacks.</p>
+                            </div>
+                        </details>
+                    </section>
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>Hybrid Aquatic</h3>
+                            <span>5 encounters</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">005</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Beakling</span>
+                                    <span class="mod-version">Miniboss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>One of Hybrid Aquatic&#039;s special miniboss creatures, built as a tougher encounter than normal wildlife.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">006</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Karcinogen</span>
+                                    <span class="mod-version">Miniboss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A crab-like aquatic miniboss included in Hybrid Aquatic&#039;s miniboss roster.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">007</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Karcinoma</span>
+                                    <span class="mod-version">Miniboss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A hostile aquatic miniboss and part of Hybrid Aquatic&#039;s group of powerful crustacean enemies.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">008</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Karkinos</span>
+                                    <span class="mod-version">Miniboss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A large aquatic miniboss capable of summoning support during its encounter.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">009</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Shell Beast</span>
+                                    <span class="mod-version">Miniboss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A heavily protected sea miniboss with its own boss health display.</p>
+                            </div>
+                        </details>
+                    </section>
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>Incendium</h3>
+                            <span>1 encounter</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">010</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Hovering Inferno</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A powerful summonable Nether boss created by Incendium for a challenging late-game battle.</p>
+                            </div>
+                        </details>
+                    </section>
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>L_Ender&#039;s Cataclysm</h3>
+                            <span>8 encounters</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">011</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Ancient Remnant</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A colossal desert-themed Cataclysm boss with heavy attacks and a dedicated rage mechanic.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">012</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Ender Guardian</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A major End-themed boss that combines powerful melee strikes with void-based attacks.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">013</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Ignis</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A fiery armored boss built around aggressive combos, shield attacks, and multiple lives.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">014</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Maledictus</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>An undead Cataclysm boss with fast weapon combos, aerial attacks, and a rage system.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">015</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Netherite Monstrosity</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A massive Nether construct that attacks with lava, crushing blows, and powerful area damage.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">016</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Scylla</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A lightning-focused Cataclysm boss with a dedicated health bar and storm-based attacks.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">017</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">The Harbinger</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A mechanical boss that uses lasers, missiles, and other long-range weapons.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">018</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">The Leviathan</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>An enormous aquatic boss designed for underwater combat and devastating abyssal attacks.</p>
+                            </div>
+                        </details>
+                    </section>
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>Legendary Monsters</h3>
+                            <span>3 encounters</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">019</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Cumulonimbus</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A cloud golem boss and one of Legendary Monsters&#039; main progression encounters.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">020</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Possessed Paladin</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>An armored multi-phase boss with rapid melee combos, movement attacks, and powerful finishers.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">021</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">The Obliterator</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A major late-game boss with several phases, teleportation, lasers, and crushing attacks.</p>
+                            </div>
+                        </details>
+                    </section>
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>Mowzie&#039;s Mobs</h3>
+                            <span>4 encounters</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">022</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Ferrous Wroughtnaut</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A heavily armored underground warrior whose weak point must be exposed during combat.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">023</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Frostmaw</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A sleeping ice beast that awakens into a powerful frozen-biome boss fight.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">024</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Tongbi, the Sculptor</span>
+                                    <span class="mod-version">Boss trial</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A boss-tagged challenge encounter centered on completing the Sculptor&#039;s timed course.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">025</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Umvuthi, the Sunbird</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A radiant tribal leader that commands followers and uses powerful solar magic.</p>
+                            </div>
+                        </details>
+                    </section>
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>Stellarity</h3>
+                            <span>1 encounter</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">026</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Empress of Light</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>A prismatic End boss summoned by throwing Pixie Dust onto an Altar of Light.</p>
+                            </div>
+                        </details>
+                    </section>
+                    <section class="boss-group">
+                        <header class="boss-group-heading">
+                            <h3>The Aether</h3>
+                            <span>3 encounters</span>
+                        </header>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">027</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Slider</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>The living-stone boss of the Bronze Dungeon, attacking by sliding and crushing anything in its path.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">028</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Sun Spirit</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>The fire-wielding ruler of the Gold Dungeon and the final major dungeon boss in the Aether.</p>
+                            </div>
+                        </details>
+                        <details class="boss-item mod-item">
+                            <summary class="mod-summary">
+                                <span class="mod-number">029</span>
+                                <span class="mod-heading">
+                                    <span class="mod-name">Valkyrie Queen</span>
+                                    <span class="mod-version">Boss</span>
+                                </span>
+                                <span class="mod-action" aria-hidden="true">
+                                    <span class="mod-action-show">View details</span>
+                                    <span class="mod-action-hide">Hide details</span>
+                                    <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </summary>
+                            <div class="mod-description">
+                                <p>The leader of the Silver Dungeon&#039;s Valkyries and its main boss encounter.</p>
+                            </div>
+                        </details>
+                    </section>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -3479,10 +4108,12 @@
         const modalCopy = document.getElementById('modal-copy');
         const modalClose = document.getElementById('modal-close');
         const modalMods = document.getElementById('mods-content');
+        const modalBosses = document.getElementById('bosses-content');
         const modsSearch = document.getElementById('mods-search');
         const modsCount = document.getElementById('mods-count');
         const modsEmpty = document.getElementById('mods-empty');
-        const modItems = [...document.querySelectorAll('.mod-item')];
+        const modItems = [...document.querySelectorAll('.mods-list .mod-item')];
+        const bossItems = [...document.querySelectorAll('.bosses-content .boss-item')];
         const panelButtons = document.querySelectorAll('[data-panel]');
         let lastPanelButton = null;
 
@@ -3502,12 +4133,14 @@
 
         const openInfoModal = (button) => {
             const showsMods = button.dataset.panel === 'mods';
+            const showsBosses = button.dataset.panel === 'bosses';
             lastPanelButton = button;
             modalTitle.textContent = button.dataset.title;
             modalCopy.textContent = button.dataset.copy;
-            modalCopy.hidden = showsMods;
+            modalCopy.hidden = showsMods || showsBosses;
             modalMods.hidden = !showsMods;
-            infoModal.classList.toggle('modal--mods', showsMods);
+            modalBosses.hidden = !showsBosses;
+            infoModal.classList.toggle('modal--mods', showsMods || showsBosses);
             infoModal.classList.add('open');
             infoModal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
@@ -3518,7 +4151,7 @@
             }
 
             requestAnimationFrame(() => {
-                (showsMods ? modsSearch : modalClose).focus();
+                (showsMods ? modsSearch : showsBosses ? bossItems[0].querySelector('summary') : modalClose).focus();
             });
         };
 
@@ -3527,6 +4160,7 @@
             infoModal.setAttribute('aria-hidden', 'true');
             document.body.classList.remove('modal-open');
             modItems.forEach((item) => item.open = false);
+            bossItems.forEach((item) => item.open = false);
             lastPanelButton?.focus();
         };
 
@@ -3536,6 +4170,15 @@
             item.addEventListener('toggle', () => {
                 if (!item.open) return;
                 modItems.forEach((otherItem) => {
+                    if (otherItem !== item) otherItem.open = false;
+                });
+            });
+        });
+
+        bossItems.forEach((item) => {
+            item.addEventListener('toggle', () => {
+                if (!item.open) return;
+                bossItems.forEach((otherItem) => {
                     if (otherItem !== item) otherItem.open = false;
                 });
             });
