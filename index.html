@@ -578,6 +578,138 @@
 
 
 
+
+        .bosses-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: -3px 0 15px;
+        }
+
+        .boss-item .mod-summary {
+            align-items: center;
+        }
+
+        .boss-description {
+            padding-top: 2px;
+        }
+
+        .boss-overview {
+            margin-bottom: 14px;
+            color: #f2dde8;
+            line-height: 1.58;
+        }
+
+        .boss-facts {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 9px;
+        }
+
+        .boss-fact {
+            min-width: 0;
+            padding: 11px 12px;
+            border: 1px solid rgba(255, 221, 238, 0.11);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .boss-fact dt {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 6px;
+            color: var(--accent);
+            font-size: 0.68rem;
+            font-weight: 780;
+            letter-spacing: 0.075em;
+            text-transform: uppercase;
+        }
+
+        .boss-fact dt span {
+            width: 1rem;
+            text-align: center;
+        }
+
+        .boss-fact dd {
+            color: #e8d2df;
+            font-size: 0.78rem;
+            line-height: 1.52;
+        }
+
+        .difficulty-badge {
+            display: inline-flex;
+            align-items: center;
+            min-height: 24px;
+            padding: 4px 9px;
+            border: 1px solid;
+            border-radius: 999px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.045em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .difficulty-badge--moderate {
+            color: #bdf9d1;
+            border-color: rgba(102, 228, 154, 0.4);
+            background: rgba(102, 228, 154, 0.11);
+        }
+
+        .difficulty-badge--hard {
+            color: #ffe0a6;
+            border-color: rgba(255, 193, 92, 0.45);
+            background: rgba(255, 178, 57, 0.12);
+        }
+
+        .difficulty-badge--very-hard {
+            color: #ffc1bd;
+            border-color: rgba(255, 115, 107, 0.48);
+            background: rgba(255, 92, 82, 0.12);
+        }
+
+        .difficulty-badge--extreme {
+            color: #e5c4ff;
+            border-color: rgba(195, 119, 255, 0.5);
+            background: rgba(161, 72, 232, 0.15);
+            box-shadow: 0 0 16px rgba(161, 72, 232, 0.1);
+        }
+
+        @media (max-width: 560px) {
+            .bosses-legend {
+                gap: 6px;
+                margin-bottom: 12px;
+            }
+
+            .boss-facts {
+                grid-template-columns: 1fr;
+            }
+
+            .boss-fact {
+                padding: 10px;
+            }
+
+            .boss-item .mod-description {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+
+            .boss-item .mod-action {
+                min-width: 22px;
+            }
+
+            .boss-item .mod-action-show,
+            .boss-item .mod-action-hide {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+                white-space: nowrap;
+            }
+        }
+
         .bosses-content {
             position: relative;
             min-height: 0;
@@ -3535,7 +3667,13 @@
                 </div>
             </div>
             <div class="bosses-content" id="bosses-content" hidden>
-                <p class="bosses-intro">29 bosses and minibosses added by 11 mods in this pack.</p>
+                <p class="bosses-intro"><strong>29 boss encounters from 11 mods.</strong> Open a guide for its location, encounter trigger, difficulty, and recommended preparation. Difficulty is a practical recommendation for this pack, not an official fixed stat.</p>
+                <div class="bosses-legend" aria-label="Difficulty scale">
+                    <span class="difficulty-badge difficulty-badge--moderate">Moderate</span>
+                    <span class="difficulty-badge difficulty-badge--hard">Hard</span>
+                    <span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span>
+                    <span class="difficulty-badge difficulty-badge--extreme">Extreme</span>
+                </div>
                 <div class="bosses-list">
                     <section class="boss-group">
                         <header class="boss-group-heading">
@@ -3550,13 +3688,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A gigantic segmented creature that tears through the End using portals, charges, and void projectiles.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A gigantic segmented creature that tunnels through space, creates portals, and attacks across a huge area.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The End. Fight it on a large outer island or another wide, solid platform.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Throw a Mysterious Worm into the void while you are in the End.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--extreme">Extreme</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Endgame enchanted diamond or Netherite gear, a strong bow, Slow Falling, healing, blocks, and an Elytra with rockets for recovery.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
@@ -3573,13 +3729,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>The storm-powered boss of the Brass Dungeon, fought as a large airborne encounter.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">The 400-health guardian of the Brass Dungeon; destroying its segments can split it into several attackers.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>Inside a Brass Dungeon in the Aether.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Reach the boss room and interact with the dormant Eye of the Storm to awaken it.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Fully enchanted diamond or strong Aether-tier armor, a powerful ranged weapon, healing, food, and mobility items.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
@@ -3593,16 +3767,34 @@
                                 <span class="mod-number">003</span>
                                 <span class="mod-heading">
                                     <span class="mod-name">Stalker</span>
-                                    <span class="mod-version">Miniboss</span>
+                                    <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A dangerous sculk miniboss encountered through Ancient Temple content and trapped Ancient Vases.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A sculk boss with vibration detection, heavy melee damage, and dangerous area attacks in confined rooms.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>Naturally generated Ancient Vases in Ancient Cities or Ancient Temples in the Otherside.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Break a naturally generated Ancient Vase without Silk Touch. It has a chance to release a Stalker instead of loot or Sculk Leeches; placed vases do not work.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Fully enchanted diamond or Netherite armor, healing, a shield, ranged damage, wool for quieter movement, and an escape route.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
@@ -3619,13 +3811,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A heavy-hitting boss summoned in the Pink Salt Shrine that fights with crushing melee attacks.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A huge pink-salt brute with crushing melee attacks and a dangerous arena encounter.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The central chamber of a naturally generated Pink Salt Shrine.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Enter and activate the shrine&#039;s central Pink Salt Chamber ritual to awaken the Berserker.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--hard">Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Enchanted diamond armor, a shield, strong melee damage, a bow, healing, and space to dodge its slams.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
@@ -3642,13 +3852,31 @@
                                     <span class="mod-version">Miniboss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>One of Hybrid Aquatic&#039;s special miniboss creatures, built as a tougher encounter than normal wildlife.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A large hostile coastal bird and one of Hybrid Aquatic&#039;s miniboss-class creatures.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>Coastal and beach areas in the Overworld; explore newly generated shoreline chunks.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>No ritual is required. It is encountered through natural spawning.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--moderate">Moderate</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Iron armor or better, a shield, food, and a bow to keep distance.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3659,13 +3887,31 @@
                                     <span class="mod-version">Miniboss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A crab-like aquatic miniboss included in Hybrid Aquatic&#039;s miniboss roster.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A dangerous crustacean encounter found among the mod&#039;s ocean wildlife.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>Overworld ocean and shoreline environments; search newly generated aquatic areas.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>No ritual is required. Find one through natural spawning.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--moderate">Moderate</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Iron armor or better, a shield, reliable melee damage, food, and Water Breathing if fighting underwater.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3676,13 +3922,31 @@
                                     <span class="mod-version">Miniboss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A hostile aquatic miniboss and part of Hybrid Aquatic&#039;s group of powerful crustacean enemies.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A hostile aquatic miniboss that can pressure players at close range.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>Overworld ocean and shoreline environments; search newly generated aquatic areas.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>No ritual is required. Find one through natural spawning.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--moderate">Moderate</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Iron armor or better, a shield, food, and underwater mobility such as Depth Strider.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3693,13 +3957,31 @@
                                     <span class="mod-version">Miniboss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A large aquatic miniboss capable of summoning support during its encounter.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A giant crab summoned for a deliberate ocean-side miniboss battle.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>Summon it beside a large body of water in the Overworld.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Craft an Ominous Hook and use it near the water. Check JEI for the pack&#039;s exact recipe.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--hard">Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Enchanted diamond armor, a shield, strong melee damage, healing, Water Breathing, and Depth Strider.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3710,13 +3992,31 @@
                                     <span class="mod-version">Miniboss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A heavily protected sea miniboss with its own boss health display.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A heavily protected deep-ocean monster with a boss bar and powerful ranged attacks.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>A deep-ocean area in the Overworld.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Trade shells with a Hermit Crab to obtain an Ominous Conch, then blow the conch in the deep ocean.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Fully enchanted diamond armor, Water Breathing, Depth Strider, strong ranged damage, healing, and a boat or safe platform.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
@@ -3733,13 +4033,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A powerful summonable Nether boss created by Incendium for a challenging late-game battle.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A multi-stage Nether battle filled with fire, projectiles, summons, and a survival-focused final phase.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>An Infernal Altar structure in Incendium&#039;s Infernal Dunes biome in the Nether.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Sacrifice a Nether Star at the altar to bring the Hovering Inferno to life.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--extreme">Extreme</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Netherite or top-tier enchanted armor, Fire Resistance, strong ranged damage, golden apples, healing, and a Totem of Undying.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
@@ -3756,13 +4074,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A colossal desert-themed Cataclysm boss with heavy attacks and a dedicated rage mechanic.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">An undead desert behemoth with charges, tail attacks, sandstorms, and huge knockback.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The Cursed Pyramid in an Overworld desert. An Eye of Desert can locate it.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Excavate the suspicious sand inside the pyramid to awaken the Ancient Remnant.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Fully enchanted diamond or Netherite armor, Feather Falling, a shield, strong ranged damage, healing, and open space to avoid charges.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3773,13 +4109,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A major End-themed boss that combines powerful melee strikes with void-based attacks.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A durable End construct with shockwaves, teleports, grabs, and punishing close-range attacks.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The Ruined Citadel in the End Highlands or End Midlands.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Reach the Altar of Void on the citadel&#039;s third floor and approach the dormant guardian.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Netherite or top-tier enchanted armor, a shield, Slow Falling, strong ranged damage, healing, and an Elytra for fall recovery.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3790,13 +4144,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A fiery armored boss built around aggressive combos, shield attacks, and multiple lives.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A late-game infernal knight with multiple phases, a shield, devastating combos, and fire attacks.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The Burning Arena in the Nether. An Eye of Flame can help locate it.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Defeat an Ignited Revenant for Burning Ashes, then use the ashes on the Altar of Fire on the arena&#039;s upper floor.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--extreme">Extreme</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Best available enchanted armor, Fire Resistance, a strong axe for shields, healing, golden apples, ranged damage, and a Totem of Undying.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3807,13 +4179,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>An undead Cataclysm boss with fast weapon combos, aerial attacks, and a rage system.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A cursed winged warrior that switches weapons, grabs players, and grows more dangerous as attacks connect.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>Deep inside the Frosted Prison in a Snowy Plains biome. An Eye of Curse can locate it.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Wait for the Cursed Tombstone to be fully powered, then right-click it to summon Maledictus.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--extreme">Extreme</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Best available enchanted armor, ranged and melee options, healing, golden apples, a Totem of Undying, and constant movement.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3824,13 +4214,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A massive Nether construct that attacks with lava, crushing blows, and powerful area damage.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A lava-powered golem with enormous health, heavy slams, ranged lava attacks, and the ability to heal from lava.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The Soul Forge in the Nether, outside Basalt Deltas.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Enter the forge and approach the dormant Monstrosity to awaken it.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Post-dragon enchanted diamond or Netherite gear, Fire Resistance, a shield, ranged damage, healing, and blocks to control nearby lava.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3841,13 +4249,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A lightning-focused Cataclysm boss with a dedicated health bar and storm-based attacks.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">The Storm Empress uses lightning, water attacks, rapid movement, and summoned sea creatures.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The Acropolis in a Warm Ocean biome. An Eye of Storm can locate it.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Clear the Acropolis and enter Scylla&#039;s arena; the encounter begins when you engage her.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--extreme">Extreme</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Best available enchanted armor, Water Breathing, Depth Strider, lightning-safe positioning, strong ranged damage, healing, and a Totem.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3858,13 +4284,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A mechanical boss that uses lasers, missiles, and other long-range weapons.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A mechanical boss with missiles, charge attacks, lasers, and a lethal death-beam sequence.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The Ancient Factory deep underground in the Overworld. An Eye of Mech can locate it.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Reach the inactive Harbinger in the factory and give it a Nether Star to wake it.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--extreme">Extreme</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Best available enchanted armor, a shield, high burst damage, healing, golden apples, a Totem of Undying, and cover for laser attacks.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3875,13 +4319,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>An enormous aquatic boss designed for underwater combat and devastating abyssal attacks.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A colossal underwater predator that uses portals, mines, tentacles, bites, and powerful abyssal blasts.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The Sunken City in a Deep Ocean biome. An Eye of Abyss can locate it.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Craft an Abyssal Sacrifice and use it on the Altar of Abyss in the city&#039;s central chamber.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--extreme">Extreme</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Best available enchanted armor, Water Breathing, Respiration, Depth Strider, underwater ranged damage, healing, and a Totem.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
@@ -3898,13 +4360,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A cloud golem boss and one of Legendary Monsters&#039; main progression encounters.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A storm-powered cloud golem with aerial pressure, lightning-themed attacks, and summoned hazards.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The Cloudy Temple structure in the Overworld.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Explore the temple and approach or attack Cumulonimbus in its arena; no crafted ritual item is required.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--hard">Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Enchanted diamond armor, Projectile Protection, a bow, healing, food, and a shield.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3915,13 +4395,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>An armored multi-phase boss with rapid melee combos, movement attacks, and powerful finishers.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">An armored multi-phase warrior with fast melee chains, movement attacks, parries, and powerful finishers.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The Collapsed Kingdom structure in the Overworld.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Reach the sleeping Paladin and approach or strike it to begin the encounter.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Fully enchanted diamond or Netherite armor, a shield, ranged backup, healing, golden apples, and patience for its attack openings.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3932,13 +4430,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A major late-game boss with several phases, teleportation, lasers, and crushing attacks.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A late-game mechanical boss with multiple phases, clones, teleportation, lasers, and crushing attacks.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The Space Station structure in the End.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Insert an Eye Crystal into the station&#039;s Teleport Machine to summon the boss.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--extreme">Extreme</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Endgame Netherite or stronger gear, high ranged damage, Slow Falling, healing, golden apples, a Totem, and an Elytra with rockets.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
@@ -3955,13 +4471,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A heavily armored underground warrior whose weak point must be exposed during combat.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">An armored underground knight that is nearly invulnerable except when its weak point is exposed.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>A Wrought Chamber underground in almost any Overworld biome.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Approach or attack the dormant Wroughtnaut. Damage the weak point on its back during the recovery after its heavy slam.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--hard">Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Diamond armor, a strong weapon, a shield, healing, and enough room to circle behind it; timing matters more than raw damage.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3972,13 +4506,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A sleeping ice beast that awakens into a powerful frozen-biome boss fight.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A sleeping ice giant with freezing breath, shockwaves, and a guarded Ice Crystal.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>Rarely on the surface in cold and snowy Overworld biomes such as Snowy Plains.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Approach too closely, attack it, or disturb the Ice Crystal it guards to wake it.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Fully enchanted diamond armor, Projectile Protection, a shield, ranged damage, healing, and mobility to escape freezing attacks.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -3989,13 +4541,31 @@
                                     <span class="mod-version">Boss trial</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A boss-tagged challenge encounter centered on completing the Sculptor&#039;s timed course.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A mountain master who offers a timed parkour trial and can also become a dangerous geomancy combat encounter.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The central courtyard of a Monastery in a mountainous Overworld biome.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Offer Tongbi one Bluff Rod to begin the timed course. Bluff Rods drop from Bluffs inside the Monastery; attacking him starts combat.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--hard">Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Diamond armor for combat; for the trial bring food, clear inventory space, practice movement, and avoid relying on heavy gear alone.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -4006,13 +4576,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A radiant tribal leader that commands followers and uses powerful solar magic.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A radiant leader protected by Umvuthana followers and powerful solar magic.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>An Umvuthana Grove structure in an Overworld savanna.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Enter the grove and confront Umvuthi. No crafted summoning item is required; the encounter is generated with the structure.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Fully enchanted diamond armor, a shield, strong ranged damage, healing, and a plan to remove healing/supporting followers quickly.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
@@ -4029,13 +4617,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>A prismatic End boss summoned by throwing Pixie Dust onto an Altar of Light.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">A post-dragon prismatic boss with rapid dashes and dense projectile patterns.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>Use an Altar of Light in the End; the altar can also be moved and used in the Overworld.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Throw one Pixie Dust onto the Altar of Light. Summoning in the Overworld during daytime creates the much deadlier daylight version.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--extreme">Extreme</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Best post-dragon gear, an Elytra and rockets, very high ranged damage, healing, golden apples, Slow Falling, and a Totem. Fight at night for the safer version.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
@@ -4052,13 +4658,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>The living-stone boss of the Bronze Dungeon, attacking by sliding and crushing anything in its path.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">The living-stone guardian of the Bronze Dungeon, able to crush blocks and accelerate as its health falls.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The boss room of a Bronze Dungeon buried inside a large Aether island.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Hit the dormant Slider with a pickaxe. It can only be damaged with pickaxes.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--hard">Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Good iron, diamond, or Aether-tier armor; the strongest pickaxe available, healing, food, and movement space.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -4069,13 +4693,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>The fire-wielding ruler of the Gold Dungeon and the final major dungeon boss in the Aether.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">The fire-wielding ruler of the Gold Dungeon and the final boss in the Aether&#039;s main dungeon progression.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>A Gold Dungeon inside a large spherical island topped with Golden Oak Trees.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Talk to the Sun Spirit in the boss room and choose the challenge dialogue to begin the fight.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Strong Aether-tier or enchanted diamond armor, Fire Resistance, ranged damage, healing, and cooling or ice-themed equipment if available.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                         <details class="boss-item mod-item">
@@ -4086,13 +4728,31 @@
                                     <span class="mod-version">Boss</span>
                                 </span>
                                 <span class="mod-action" aria-hidden="true">
-                                    <span class="mod-action-show">View details</span>
-                                    <span class="mod-action-hide">Hide details</span>
+                                    <span class="mod-action-show">Open guide</span>
+                                    <span class="mod-action-hide">Close guide</span>
                                     <svg viewBox="0 0 16 16"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </summary>
-                            <div class="mod-description">
-                                <p>The leader of the Silver Dungeon&#039;s Valkyries and its main boss encounter.</p>
+                            <div class="mod-description boss-description">
+                                <p class="boss-overview">The leader of the Silver Dungeon&#039;s Valkyries, fought in a locked throne-room arena.</p>
+                                <dl class="boss-facts">
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⌖</span> Where to find</dt>
+                                        <dd>The boss room of a Silver Dungeon, a large temple high in the Aether.</dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">✦</span> How to start</dt>
+                                        <dd>Defeat Valkyries to collect 10 Victory Medals, then offer all 10 to the Valkyrie Queen to challenge her.</dd>
+                                    </div>
+                                    <div class="boss-fact boss-fact--difficulty">
+                                        <dt><span aria-hidden="true">◆</span> Difficulty</dt>
+                                        <dd><span class="difficulty-badge difficulty-badge--very-hard">Very Hard</span></dd>
+                                    </div>
+                                    <div class="boss-fact">
+                                        <dt><span aria-hidden="true">⚔</span> How to prepare</dt>
+                                        <dd>Strong Aether-tier or enchanted diamond armor, a shield, healing, ranged backup, and the 10 Victory Medals.</dd>
+                                    </div>
+                                </dl>
                             </div>
                         </details>
                     </section>
