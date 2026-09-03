@@ -254,6 +254,71 @@
             letter-spacing: 0.025em;
         }
 
+        .server-address {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin: 0 0 18px;
+            padding: 11px 12px 11px 15px;
+            border: 1px solid rgba(255, 183, 217, 0.24);
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(255, 112, 181, 0.1), rgba(255, 255, 255, 0.035));
+            text-align: left;
+        }
+
+        .server-address-copy {
+            min-width: 0;
+        }
+
+        .server-address-label {
+            display: block;
+            margin-bottom: 3px;
+            color: #b99cac;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .server-address-value {
+            display: block;
+            overflow-wrap: anywhere;
+            color: #fff1f8;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-size: 0.87rem;
+            font-weight: 750;
+        }
+
+        .server-copy-button {
+            min-width: 72px;
+            min-height: 40px;
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 183, 217, 0.35);
+            border-radius: 10px;
+            color: #ffd8eb;
+            background: rgba(255, 112, 181, 0.12);
+            font: inherit;
+            font-size: 0.72rem;
+            font-weight: 800;
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .server-copy-button:hover,
+        .server-copy-button:focus-visible {
+            transform: translateY(-1px);
+            border-color: rgba(255, 183, 217, 0.68);
+            background: rgba(255, 112, 181, 0.2);
+        }
+
+        .server-copy-button.copied {
+            color: #caffdc;
+            border-color: rgba(102, 228, 154, 0.55);
+            background: rgba(102, 228, 154, 0.12);
+        }
+
         .socials {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1309,6 +1374,14 @@
                 <span class="tag">CREATOR</span>
                 <span class="tag">STREAMER</span>
                 <span class="tag">GAMING</span>
+            </div>
+
+            <div class="server-address" aria-label="Minecraft server address">
+                <div class="server-address-copy">
+                    <span class="server-address-label">Minecraft server</span>
+                    <span class="server-address-value" id="server-address">185.83.153.3:25576</span>
+                </div>
+                <button class="server-copy-button" id="server-copy-button" type="button" aria-describedby="server-address">Copy IP</button>
             </div>
 
             <nav class="socials" aria-label="Modpack navigation">
@@ -5101,6 +5174,8 @@
 
     <script>
 
+        const serverAddress = document.getElementById('server-address');
+        const serverCopyButton = document.getElementById('server-copy-button');
         const infoModal = document.getElementById('info-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalCopy = document.getElementById('modal-copy');
@@ -5199,6 +5274,28 @@
                     if (otherItem !== item) otherItem.open = false;
                 });
             });
+        });
+
+        serverCopyButton.addEventListener('click', async () => {
+            const address = serverAddress.textContent.trim();
+
+            try {
+                await navigator.clipboard.writeText(address);
+                serverCopyButton.textContent = 'Copied!';
+                serverCopyButton.classList.add('copied');
+            } catch {
+                const selection = window.getSelection();
+                const range = document.createRange();
+                range.selectNodeContents(serverAddress);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                serverCopyButton.textContent = 'Select IP';
+            }
+
+            window.setTimeout(() => {
+                serverCopyButton.textContent = 'Copy IP';
+                serverCopyButton.classList.remove('copied');
+            }, 1800);
         });
 
         panelButtons.forEach((button) => {
