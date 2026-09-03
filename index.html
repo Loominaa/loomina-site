@@ -1227,6 +1227,35 @@
             }
         }
 
+
+        .party-content{position:relative;min-height:0;display:flex;flex:1;flex-direction:column;gap:11px;margin-top:18px;padding-right:5px;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:rgba(255,183,217,.45) transparent;scrollbar-width:thin}
+        .party-content[hidden]{display:none}
+        .party-intro{color:#efdbe6;font-size:.9rem;line-height:1.6}.party-intro strong{color:var(--accent)}
+        .party-quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+        .party-quick-card{padding:12px;border:1px solid rgba(255,221,238,.12);border-radius:13px;background:rgba(255,255,255,.038)}
+        .party-quick-card span{display:block;margin-bottom:5px;color:#fff1f8;font-size:.8rem;font-weight:800}
+        .party-quick-card p{color:#cdb1c1;font-size:.72rem;line-height:1.45}
+        .party-content code{overflow-wrap:anywhere;color:#ffd8eb;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+        .party-section{border:1px solid rgba(255,221,238,.13);border-radius:14px;background:rgba(255,255,255,.035);overflow:hidden}
+        .party-section summary{min-height:54px;display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;list-style:none;color:#fff1f8;font-size:.86rem;font-weight:800}
+        .party-section summary::-webkit-details-marker{display:none}
+        .party-section summary::after{content:"Open guide";margin-left:auto;color:#f4a9cc;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+        .party-section[open] summary::after{content:"Close guide"}
+        .party-section summary svg{width:15px;min-width:15px;color:#f4a9cc;transition:transform 180ms ease}.party-section[open] summary svg{transform:rotate(180deg)}
+        .party-section-body{padding:0 14px 14px;border-top:1px solid rgba(255,221,238,.1)}
+        .party-section-body>p{margin:12px 0;color:#cfb5c4;font-size:.78rem;line-height:1.55}
+        .party-steps{display:grid;gap:7px;margin-top:12px;list-style:none;counter-reset:party-step}
+        .party-steps li{position:relative;padding-left:31px;color:#d9c0ce;font-size:.78rem;line-height:1.5;counter-increment:party-step}
+        .party-steps li::before{content:counter(party-step);position:absolute;left:0;top:0;width:21px;height:21px;display:grid;place-items:center;border-radius:50%;color:#291020;background:#f4a9cc;font-size:.66rem;font-weight:900}
+        .command-list{display:grid;gap:7px;margin-top:12px}
+        .command-row{display:grid;grid-template-columns:minmax(190px,.8fr) minmax(0,1.2fr);gap:12px;align-items:start;padding:10px 11px;border:1px solid rgba(255,221,238,.09);border-radius:10px;background:rgba(13,5,12,.24)}
+        .command-row code{font-size:.72rem;font-weight:750;line-height:1.45}
+        .command-row span{color:#cdb2c1;font-size:.73rem;line-height:1.48}
+        .command-note{margin-top:10px;padding:10px 11px;border-left:3px solid #f4a9cc;border-radius:0 9px 9px 0;color:#d9becd;background:rgba(244,169,204,.07);font-size:.74rem;line-height:1.5}
+        .admin-label{display:inline-flex;margin-left:6px;padding:2px 6px;border:1px solid rgba(255,195,127,.35);border-radius:999px;color:#ffc98c;background:rgba(255,160,70,.08);font-size:.6rem;letter-spacing:.05em;text-transform:uppercase}
+        @media (max-width:700px){.party-quick{grid-template-columns:1fr}.command-row{grid-template-columns:1fr;gap:5px}.party-section summary::after{content:"Open"}.party-section[open] summary::after{content:"Close"}}
+        @media (max-width:420px){.party-content{padding-right:1px}.party-section summary{padding:12px 11px}.party-section-body{padding:0 11px 12px}.command-row{padding:9px}.party-quick-card{padding:10px}}
+
         @media (prefers-reduced-motion: reduce) {
             .ambient-gradient,
             .particle {
@@ -1295,7 +1324,7 @@
                     <span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img"><path fill="currentColor" d="M9 3h6v3h3v4h3v6h-3v4H6v-4H3v-6h3V6h3V3Zm2 2v3H8v4H5v2h3v4h8v-4h3v-2h-3V8h-3V5h-2Zm-1 7h2v2h-2v-2Zm4 0h2v2h-2v-2Z"/></svg></span>
                     <span class="social-name">Mods</span>
                 </button>
-                <button class="social" type="button" data-panel="party-and-claims" data-title="Party and Claims" data-copy="Party and claim information will appear here." aria-label="Open Party and Claims">
+                <button class="social" type="button" data-panel="party-and-claims" data-title="Party and Claims" data-copy="Learn how parties, protected chunks, forceloads, permissions, and every player command work." aria-label="Open Party and Claims">
                     <span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img"><path fill="currentColor" d="M8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8-1a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8 13c-4 0-7 2-7 5v2h10v-2c0-1.5.7-2.8 1.8-3.9A10.4 10.4 0 0 0 8 13Zm8-1c-2.8 0-5 1.7-5 4v4h12v-4c0-2.3-3.2-4-7-4Z"/></svg></span>
                     <span class="social-name">Party and Claims</span>
                 </button>
@@ -4952,6 +4981,121 @@
                     </section>
                 </div>
             </div>
+            <div class="party-content" id="party-content" hidden>
+                <p class="party-intro"><strong>Open Parties and Claims 0.30.3</strong> lets friends share a party, protect chunks, control who may interact inside them, and optionally keep claimed chunks loaded. Command suggestions appear when you press <strong>Tab</strong>.</p>
+                <div class="party-quick">
+                    <div class="party-quick-card"><span>Open the menu</span><p>Press the apostrophe key <code>'</code>. You can change this in Minecraft's keybind settings.</p></div>
+                    <div class="party-quick-card"><span>Claim on the map</span><p>Open Xaero's World Map with <code>M</code>, then right-click or right-drag chunks.</p></div>
+                    <div class="party-quick-card"><span>Know the limit</span><p>Your claim and forceload totals depend on this server's settings.</p></div>
+                </div>
+
+                <details class="party-section">
+                    <summary>How parties work <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+                    <div class="party-section-body">
+                        <ol class="party-steps">
+                            <li>Create a party with <code>/oparties create</code>.</li>
+                            <li>Invite friends. They can click the chat invitation or join with its party ID.</li>
+                            <li>The owner can promote members to moderator. Moderators can invite and remove members.</li>
+                            <li>Enable party claiming before claiming land that the whole party should share.</li>
+                            <li>Party allies may receive access according to the claim's permission settings; <em>non-allies</em> means everyone else.</li>
+                        </ol>
+                        <p class="command-note">A party is identified by its owner's UUID. If the owner leaves, ownership must first be transferred or the party destroyed.</p>
+                    </div>
+                </details>
+
+                <details class="party-section">
+                    <summary>All party commands <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+                    <div class="party-section-body">
+                        <div class="command-list">
+                            <div class="command-row"><code>/oparties create</code><span>Create a new party and become its owner.</span></div>
+                            <div class="command-row"><code>/oparties about</code><span>Show information about your party.</span></div>
+                            <div class="command-row"><code>/oparties about &lt;player&gt;</code><span>Show the party belonging to a player.</span></div>
+                            <div class="command-row"><code>/oparties member invite &lt;player&gt;</code><span>Invite a player. Owner or moderator required.</span></div>
+                            <div class="command-row"><code>/oparties join &lt;party-id&gt;</code><span>Accept an invitation using the party ID shown in chat.</span></div>
+                            <div class="command-row"><code>/oparties leave</code><span>Leave your current party. The owner must transfer ownership or destroy it.</span></div>
+                            <div class="command-row"><code>/oparties member kick &lt;name&gt;</code><span>Remove a member from the party.</span></div>
+                            <div class="command-row"><code>/oparties member rank &lt;rank&gt; &lt;name&gt;</code><span>Change a member's rank; use Tab to see valid ranks.</span></div>
+                            <div class="command-row"><code>/oparties transfer &lt;new-owner&gt;</code><span>Start transferring ownership to a member.</span></div>
+                            <div class="command-row"><code>/oparties transfer &lt;new-owner&gt; confirm</code><span>Confirm the ownership transfer.</span></div>
+                            <div class="command-row"><code>/oparties ally add &lt;player&gt;</code><span>Request an alliance with the player's party.</span></div>
+                            <div class="command-row"><code>/oparties ally remove &lt;owner&gt;</code><span>Remove an allied party by its owner's name.</span></div>
+                            <div class="command-row"><code>/oparties chat &lt;message&gt;</code><span>Send a private message to your party.</span></div>
+                            <div class="command-row"><code>/opm &lt;message&gt;</code><span>Short alias for party chat.</span></div>
+                            <div class="command-row"><code>/oparties destroy</code><span>Ask to permanently disband the party.</span></div>
+                            <div class="command-row"><code>/oparties destroy confirm</code><span>Confirm permanently disbanding the party.</span></div>
+                            <div class="command-row"><code>/oparties admin-mode</code><span>Toggle party administration mode. <b class="admin-label">Admin</b></span></div>
+                            <div class="command-row"><code>/oparties impersonate &lt;profile&gt;</code><span>Manage parties as another profile; run without a profile to stop. <b class="admin-label">Admin</b></span></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="party-section">
+                    <summary>How claims work <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+                    <div class="party-section-body">
+                        <ol class="party-steps">
+                            <li>Stand inside the chunk you want, or select chunks on Xaero's World Map.</li>
+                            <li>Choose whether the claim belongs to you or your party. Party mode requires the correct party rank or permission.</li>
+                            <li>Claiming protects the full 16×16 chunk from breaking, placing, containers, mobs, and other actions according to its settings.</li>
+                            <li>Use the claim settings screen to choose what party members, allies, and non-allies may do.</li>
+                            <li>Forceload only the chunks that truly need to run while nobody is nearby; it is separate from protection.</li>
+                        </ol>
+                        <p class="command-note">Map shortcut: press <code>M</code>, right-click a chunk for actions, or hold and drag the right mouse button across several chunks. The server can change claim limits and permissions.</p>
+                    </div>
+                </details>
+
+                <details class="party-section">
+                    <summary>All claim commands <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+                    <div class="party-section-body">
+                        <div class="command-list">
+                            <div class="command-row"><code>/oclaims about</code><span>Show your claim and forceload totals and limits.</span></div>
+                            <div class="command-row"><code>/oclaims claim</code><span>Claim the chunk you are standing in.</span></div>
+                            <div class="command-row"><code>/oclaims unclaim</code><span>Remove the claim from your current chunk.</span></div>
+                            <div class="command-row"><code>/oclaims claim &lt;from-pos&gt; &lt;to-pos&gt;</code><span>Claim a rectangular chunk area between two block positions.</span></div>
+                            <div class="command-row"><code>/oclaims unclaim &lt;from-pos&gt; &lt;to-pos&gt;</code><span>Unclaim a rectangular area.</span></div>
+                            <div class="command-row"><code>/oclaims forceload</code><span>Keep the current claimed chunk loaded while permitted.</span></div>
+                            <div class="command-row"><code>/oclaims unforceload</code><span>Stop forceloading the current chunk.</span></div>
+                            <div class="command-row"><code>/oclaims party-claim-mode</code><span>Toggle party-owned claiming.</span></div>
+                            <div class="command-row"><code>/oclaims player-claim-mode</code><span>Toggle explicit personal claiming mode.</span></div>
+                            <div class="command-row"><code>/oclaims default-claim-mode</code><span>Return to the normal/default claiming mode.</span></div>
+                            <div class="command-row"><code>/oclaims non-ally-mode</code><span>Toggle non-ally claim display/edit mode.</span></div>
+                            <div class="command-row"><code>/oclaims sub-claim current</code><span>Show the sub-claim currently selected.</span></div>
+                            <div class="command-row"><code>/oclaims sub-claim use &lt;sub-id&gt;</code><span>Select a sub-claim with its own permission settings.</span></div>
+                            <div class="command-row"><code>/oclaims transfer &lt;player&gt;</code><span>Offer all your claims to another player.</span></div>
+                            <div class="command-row"><code>/oclaims transfer &lt;player&gt; confirm</code><span>Confirm the transfer offer.</span></div>
+                            <div class="command-row"><code>/oclaims transfer-accept &lt;player-id&gt;</code><span>Accept a pending claim transfer.</span></div>
+                            <div class="command-row"><code>/oclaims clear</code><span>Start removing all of your claims.</span></div>
+                            <div class="command-row"><code>/oclaims clear confirm</code><span>Confirm removing all of your claims.</span></div>
+                            <div class="command-row"><code>/oclaims moderator-mode</code><span>Toggle claim moderator mode. <b class="admin-label">Staff</b></span></div>
+                            <div class="command-row"><code>/oclaims admin-mode</code><span>Toggle claim administrator mode. <b class="admin-label">Admin</b></span></div>
+                            <div class="command-row"><code>/oclaims server-claim-mode</code><span>Toggle server-owned claiming. <b class="admin-label">Admin</b></span></div>
+                            <div class="command-row"><code>/oclaims impersonate &lt;player&gt;</code><span>Manage another player's claims; run without a player to stop. <b class="admin-label">Admin</b></span></div>
+                            <div class="command-row"><code>/oclaims teleport &lt;profile&gt;</code><span>Teleport to one of a profile's claims. <b class="admin-label">Staff</b></span></div>
+                            <div class="command-row"><code>/oclaims interrupt</code><span>Stop a running large-area claim action. <b class="admin-label">Staff</b></span></div>
+                        </div>
+                        <p class="command-note">Advanced forms also accept a dimension, coordinates, sub-claim, or <code>as &lt;player&gt;</code>. Type the command and press <strong>Tab</strong> to see only the variants and permissions available on this server.</p>
+                    </div>
+                </details>
+
+                <details class="party-section">
+                    <summary>Permissions and settings commands <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+                    <div class="party-section-body">
+                        <p>Most people should edit permissions in the <code>'</code> menu. These command templates expose the same configuration system; replace the words in angle brackets and use Tab completion for valid option keys and values.</p>
+                        <div class="command-list">
+                            <div class="command-row"><code>/opac player-config &lt;key&gt;</code><span>Read one of your claim permission settings.</span></div>
+                            <div class="command-row"><code>/opac player-config &lt;key&gt; &lt;value&gt;</code><span>Change one of your personal claim settings.</span></div>
+                            <div class="command-row"><code>/opac player-config sub list</code><span>List your personal sub-claims.</span></div>
+                            <div class="command-row"><code>/opac player-config sub create &lt;sub-id&gt;</code><span>Create a personal sub-claim.</span></div>
+                            <div class="command-row"><code>/opac player-config sub delete &lt;sub-id&gt;</code><span>Delete a personal sub-claim.</span></div>
+                            <div class="command-row"><code>/opac party-claims-config &lt;key&gt;</code><span>Read a party claim setting.</span></div>
+                            <div class="command-row"><code>/opac party-claims-config &lt;key&gt; &lt;value&gt;</code><span>Change a party claim setting when your rank allows it.</span></div>
+                            <div class="command-row"><code>/opac party-claims-config sub list</code><span>List the party's sub-claims.</span></div>
+                            <div class="command-row"><code>/opac party-claims-config sub create &lt;sub-id&gt;</code><span>Create a party sub-claim.</span></div>
+                            <div class="command-row"><code>/opac party-claims-config sub delete &lt;sub-id&gt;</code><span>Delete a party sub-claim.</span></div>
+                        </div>
+                        <p class="command-note"><strong>Permission groups:</strong> Party members, party allies, and non-allies can each receive different access. Settings may cover block breaking/placing, containers, item use, entity interaction, mobs, explosions, PvP, and more. Server rules can lock individual options.</p>
+                    </div>
+                </details>
+            </div>
         </section>
     </div>
 
@@ -4964,11 +5108,13 @@
         const modalInstall = document.getElementById('install-content');
         const modalMods = document.getElementById('mods-content');
         const modalBosses = document.getElementById('bosses-content');
+        const modalParty = document.getElementById('party-content');
         const modsSearch = document.getElementById('mods-search');
         const modsCount = document.getElementById('mods-count');
         const modsEmpty = document.getElementById('mods-empty');
         const modItems = [...document.querySelectorAll('.mods-list .mod-item')];
         const bossItems = [...document.querySelectorAll('.bosses-content .boss-item')];
+        const partyDetails = [...document.querySelectorAll('.party-content .party-section')];
         const ramDetails = document.getElementById('ram-details');
         const panelButtons = document.querySelectorAll('[data-panel]');
         let lastPanelButton = null;
@@ -4991,14 +5137,16 @@
             const showsInstall = button.dataset.panel === 'how-to-install';
             const showsMods = button.dataset.panel === 'mods';
             const showsBosses = button.dataset.panel === 'bosses';
+            const showsParty = button.dataset.panel === 'party-and-claims';
             lastPanelButton = button;
             modalTitle.textContent = button.dataset.title;
             modalCopy.textContent = button.dataset.copy;
-            modalCopy.hidden = showsInstall || showsMods || showsBosses;
+            modalCopy.hidden = showsInstall || showsMods || showsBosses || showsParty;
             modalInstall.hidden = !showsInstall;
             modalMods.hidden = !showsMods;
             modalBosses.hidden = !showsBosses;
-            infoModal.classList.toggle('modal--mods', showsInstall || showsMods || showsBosses);
+            modalParty.hidden = !showsParty;
+            infoModal.classList.toggle('modal--mods', showsInstall || showsMods || showsBosses || showsParty);
             infoModal.classList.add('open');
             infoModal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
@@ -5009,7 +5157,7 @@
             }
 
             requestAnimationFrame(() => {
-                (showsInstall ? modalInstall.querySelector('.install-link') : showsMods ? modsSearch : showsBosses ? bossItems[0].querySelector('summary') : modalClose).focus();
+                (showsInstall ? modalInstall.querySelector('.install-link') : showsMods ? modsSearch : showsBosses ? bossItems[0].querySelector('summary') : showsParty ? partyDetails[0].querySelector('summary') : modalClose).focus();
             });
         };
 
@@ -5019,6 +5167,7 @@
             document.body.classList.remove('modal-open');
             modItems.forEach((item) => item.open = false);
             bossItems.forEach((item) => item.open = false);
+            partyDetails.forEach((item) => item.open = false);
             if (ramDetails) ramDetails.open = false;
             lastPanelButton?.focus();
         };
@@ -5038,6 +5187,15 @@
             item.addEventListener('toggle', () => {
                 if (!item.open) return;
                 bossItems.forEach((otherItem) => {
+                    if (otherItem !== item) otherItem.open = false;
+                });
+            });
+        });
+
+        partyDetails.forEach((item) => {
+            item.addEventListener('toggle', () => {
+                if (!item.open) return;
+                partyDetails.forEach((otherItem) => {
                     if (otherItem !== item) otherItem.open = false;
                 });
             });
